@@ -99,7 +99,9 @@ export default async function FlightPage({
       {loadUpdates && loadUpdates.length > 0 && (
         <div className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">
           <p className="mb-2 text-sm font-medium text-text-primary">Évolution de la difficulté</p>
-          <DifficultySparkline points={loadUpdates} />
+          <DifficultySparkline
+            points={loadUpdates.map((u) => ({ recordedAt: u.recorded_at, difficulty: u.difficulty }))}
+          />
           {latestLoad?.seats_by_cabin && Object.keys(latestLoad.seats_by_cabin).length > 0 && (
             <p className="mt-2 text-xs text-text-muted">
               Dernier remplissage connu ({new Date(latestLoad.recorded_at).toLocaleString('fr-FR')}) :{' '}

@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
+import type { Database } from './database.types';
 
-let client: ReturnType<typeof createClient> | null = null;
+let client: ReturnType<typeof createClient<Database>> | null = null;
 
 // Toutes les requêtes à Supabase passent par ce client, exécuté uniquement
 // côté serveur (Server Components et Route Handlers). Le navigateur ne parle
@@ -13,7 +14,7 @@ export function getSupabase() {
     if (!url || !key) {
       throw new Error('SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY manquants dans les variables d\'environnement.');
     }
-    client = createClient(url, key, { auth: { persistSession: false } });
+    client = createClient<Database>(url, key, { auth: { persistSession: false } });
   }
   return client;
 }

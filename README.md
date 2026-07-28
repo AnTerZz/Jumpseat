@@ -142,10 +142,12 @@ rappel part automatiquement vers le posteur (`lib/email.ts`,
    → `RESEND_API_KEY`. Le domaine d'essai `onboarding@resend.dev` fonctionne
    sans configuration DNS pour démarrer.
 2. Génère un secret (`openssl rand -hex 32`) → `CRON_SECRET`.
-3. `vercel.json` déclenche `/api/remind` toutes les heures une fois déployé
-   sur Vercel (les crons Vercel n'existent qu'en production, pas en local).
-   Vérifie dans le dashboard Vercel que le cron apparaît bien après le
-   premier déploiement.
+3. `vercel.json` déclenche `/api/remind` une fois par jour (9h UTC) une fois
+   déployé sur Vercel (les crons Vercel n'existent qu'en production, pas en
+   local). Fréquence quotidienne imposée par le plan Hobby de Vercel (les
+   crons plus fréquents nécessitent un plan Pro) ; passe à `0 * * * *` si tu
+   upgrades. Vérifie dans le dashboard Vercel que le cron apparaît bien après
+   le premier déploiement.
 
 ## 9. Ligues (groupes)
 

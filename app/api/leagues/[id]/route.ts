@@ -22,7 +22,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   }
 
   const { showConsensus, name } = await request.json();
-  const updates: Record<string, unknown> = {};
+  const updates: { show_consensus?: boolean; name?: string } = {};
   if (typeof showConsensus === 'boolean') updates.show_consensus = showConsensus;
   if (typeof name === 'string' && name.trim().length >= 2) updates.name = name.trim();
 

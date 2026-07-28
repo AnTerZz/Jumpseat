@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSupabase } from '@/lib/supabaseServer';
 import { getCurrentUser } from '@/lib/currentUser';
-import { computeDifficulty } from '@/lib/difficulty';
+import { computeDifficulty, type TicketType, type DataTier } from '@/lib/difficulty';
 
 export async function POST(request: Request, { params }: { params: { id: string } }) {
   const user = await getCurrentUser();
@@ -34,8 +34,8 @@ export async function POST(request: Request, { params }: { params: { id: string 
 
   const recordedAt = new Date();
   const difficulty = computeDifficulty({
-    ticketType: flight.ticket_type,
-    dataTier: flight.data_tier,
+    ticketType: flight.ticket_type as TicketType | null,
+    dataTier: flight.data_tier as DataTier,
     scheduledDeparture: flight.scheduled_departure,
     recordedAt,
     seniorityDate: user.seniority_date,
