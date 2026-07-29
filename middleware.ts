@@ -2,7 +2,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
 // Chemins accessibles sans être connecté.
-const PUBLIC_PATHS = ['/login', '/auth/callback', '/join'];
+const PUBLIC_PATHS = ['/login', '/auth/callback'];
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });

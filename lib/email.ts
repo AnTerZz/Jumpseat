@@ -4,7 +4,7 @@ import { APP_NAME } from './constants';
 // Service d'envoi d'e-mail transactionnel dédié aux e-mails applicatifs
 // (le rappel de résultat). Supabase Auth gère ses propres e-mails de
 // connexion séparément — celui-ci nécessite sa propre clé API (voir
-// RESEND_API_KEY dans .env.example).
+// RESEND_API_KEY dans .env.local).
 export async function sendResultReminderEmail({
   to,
   pseudo,

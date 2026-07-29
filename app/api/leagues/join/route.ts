@@ -13,17 +13,18 @@ export async function POST(request: Request) {
   }
 
   const { inviteCode } = await request.json();
-  if (!inviteCode) return NextResponse.json({ error: "Code d'invitation manquant." }, { status: 400 });
+  const cleanCode = (inviteCode ?? '').trim().toLowerCase();
+  if (!cleanCode) return NextResponse.json({ error: "Code d'invitation manquant." }, { status: 400 });
 
   const supabase = getSupabase();
   const { data: league } = await supabase
     .from('leagues')
     .select('*')
-    .eq('invite_code', inviteCode)
+    .eq('invite_code', cleanCode)
     .maybeSingle();
 
   if (!league) {
-    return NextResponse.json({ error: "Ce lien d'invitation n'est pas valide." }, { status: 404 });
+    return NextResponse.json({ error: "Ce code d'invitation n'est pas valide." }, { status: 404 });
   }
 
   const { data: existing } = await supabase

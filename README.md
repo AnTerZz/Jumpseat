@@ -16,7 +16,7 @@ sur son vol GP — et dans quelle classe, et combien il restera de sièges.
   de sièges restants.
 - Plus le pari est posé tôt (loin du décollage), plus il rapporte de points
   — mais jamais 0, il reste une incertitude jusqu'à H-1h.
-- Plusieurs ligues indépendantes, qu'on rejoint via un lien d'invitation.
+- Plusieurs ligues indépendantes, qu'on rejoint via un code d'invitation.
   Classement par ligue (points + distance parcourue), tableau à volets façon
   panneau d'aéroport.
 - Indice de difficulté par vol (type de billet R2, vacances scolaires,
@@ -34,8 +34,7 @@ sur son vol GP — et dans quelle classe, et combien il restera de sièges.
 
 ```bash
 npm install
-cp .env.example .env.local
-# puis remplis .env.local (voir sections 3-4 et 8)
+# crée .env.local à la racine avec les variables listées aux sections 3-4 et 8
 npm run dev
 ```
 
@@ -60,7 +59,7 @@ L'app est disponible sur http://localhost:3000.
 Auth par e-mail (lien magique, sans mot de passe) via Supabase Auth :
 - Client navigateur : `lib/supabase/client.ts`
 - Client serveur (lecture de session) : `lib/supabase/server.ts`
-- `middleware.ts` protège toutes les pages sauf `/login`, `/auth/callback`, `/join/*`
+- `middleware.ts` protège toutes les pages sauf `/login`, `/auth/callback`
 - `app/auth/callback/route.ts` échange le code du lien magique contre une session
 
 Le profil applicatif (pseudo, ancienneté) est séparé de l'auth : table
@@ -153,15 +152,17 @@ rappel part automatiquement vers le posteur (`lib/email.ts`,
 
 - Une ligue = un groupe avec son propre classement (table `leagues`).
 - N'importe qui peut en créer une (`/leagues`), aucune restriction de rôle.
-- On rejoint une ligue existante via un lien d'invitation `/join/{code}`
-  (visible sur `/l/{id}/settings`) plutôt que par e-mail individuel, pour
-  éviter un second service d'envoi d'e-mails.
+- On rejoint une ligue existante en saisissant son code d'invitation (affiché
+  en haut du tableau des vols, `/l/{id}`) dans le formulaire de `/leagues`,
+  plutôt que par e-mail individuel, pour éviter un second service d'envoi
+  d'e-mails.
 - Le score (`total_points`) est stocké par ligue dans `league_members`, pas
   sur le profil : une même personne a un classement indépendant dans chaque
   ligue à laquelle elle participe.
-- `leagues.show_consensus` (togglable par le créateur dans `/l/{id}/settings`)
-  affiche ou masque la répartition des pronostics de tout le monde sur
-  chaque vol (`ConsensusBar`).
+- La sagesse collective (répartition des pronostics de tout le monde sur
+  chaque vol, `ConsensusBar`) est toujours affichée — plus de réglage par
+  ligue pour la masquer (la colonne `leagues.show_consensus` reste en base
+  mais n'est plus lue par l'app).
 
 ## 10. Où ajuster les règles du jeu
 

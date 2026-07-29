@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/currentUser';
 import { getSupabase } from '@/lib/supabaseServer';
-import CreateLeagueForm from '@/components/CreateLeagueForm';
+import LeagueActions from '@/components/LeagueActions';
 import Link from 'next/link';
 
 export default async function LeaguesPage() {
@@ -37,13 +37,7 @@ export default async function LeaguesPage() {
         )}
       </div>
 
-      <h2 className="mb-3 font-display text-lg text-text-primary">Créer une ligue</h2>
-      <CreateLeagueForm />
-
-      <p className="mt-6 text-sm text-text-muted">
-        Pour rejoindre une ligue existante, demande le lien d&apos;invitation
-        (<span className="font-mono">/join/...</span>) à un collègue déjà membre.
-      </p>
+      <LeagueActions />
     </main>
   );
 }

@@ -25,12 +25,23 @@ export default async function LeagueDashboardPage({ params }: { params: { league
     .sort((a: any, b: any) => a.scheduled_departure.localeCompare(b.scheduled_departure));
   const past = all.filter((f: any) => getFlightPhase(f) === 'awaiting_result' || getFlightPhase(f) === 'resolved');
 
+  const flightIds = all.map((f: any) => f.id);
+  const { data: myBets } =
+    flightIds.length > 0
+      ? await supabase.from('bets').select('flight_id').eq('user_id', user.id).in('flight_id', flightIds)
+      : { data: [] as { flight_id: string }[] };
+  const bettedFlightIds = new Set((myBets ?? []).map((b: any) => b.flight_id));
+
   return (
     <main className="mx-auto max-w-4xl px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <p className="text-xs uppercase tracking-wide text-text-muted">{league.name}</p>
           <h1 className="font-display text-2xl text-text-primary">Tableau des vols</h1>
+          <p className="mt-1 text-xs text-text-muted">
+            Code d&apos;invitation :{' '}
+            <span className="font-mono text-text-primary">{league.invite_code}</span>
+          </p>
         </div>
         <Link
           href={`/l/${league.id}/flights/new`}
@@ -59,7 +70,7 @@ export default async function LeagueDashboardPage({ params }: { params: { league
           <span>Statut</span>
         </div>
         {upcoming.map((f: any) => (
-          <FlightBoardRow key={f.id} flight={f} leagueId={league.id} />
+          <FlightBoardRow key={f.id} flight={f} leagueId={league.id} hasBet={bettedFlightIds.has(f.id)} />
         ))}
         {upcoming.length === 0 && (
           <p className="px-4 py-8 text-center text-text-muted">Aucun vol à venir. Sois le premier !</p>
@@ -73,7 +84,7 @@ export default async function LeagueDashboardPage({ params }: { params: { league
           </h2>
           <div className="overflow-hidden rounded-lg border border-navy-line bg-navy-panel">
             {past.map((f: any) => (
-              <FlightBoardRow key={f.id} flight={f} leagueId={league.id} />
+              <FlightBoardRow key={f.id} flight={f} leagueId={league.id} hasBet={bettedFlightIds.has(f.id)} />
             ))}
           </div>
         </>

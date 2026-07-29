@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { getSupabase } from '@/lib/supabaseServer';
 import { getCurrentUser } from '@/lib/currentUser';
@@ -50,6 +51,12 @@ export default async function FlightPage({
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-8">
+      <Link
+        href={`/l/${league.id}`}
+        className="mb-4 inline-flex items-center gap-1 text-sm text-text-muted hover:text-amber"
+      >
+        ← Tableau des vols
+      </Link>
       <p className="mb-1 text-xs uppercase tracking-wide text-text-muted">
         Posté par {flight.profiles?.pseudo ?? '?'}
         {ticketLabel ? ` · ${ticketLabel}` : ''}
@@ -116,12 +123,10 @@ export default async function FlightPage({
         </div>
       )}
 
-      {league.show_consensus && (
-        <div className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">
-          <p className="mb-2 text-sm font-medium text-text-primary">Sagesse collective</p>
-          <ConsensusBar bets={bets ?? []} />
-        </div>
-      )}
+      <div className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">
+        <p className="mb-2 text-sm font-medium text-text-primary">Sagesse collective</p>
+        <ConsensusBar bets={bets ?? []} />
+      </div>
 
       <h2 className="mb-2 mt-8 font-display text-lg text-text-primary">
         Pronostics ({(bets ?? []).length})
