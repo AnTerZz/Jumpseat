@@ -67,8 +67,8 @@ create table if not exists flights (
 -- n'importe quel membre de la ligue peut en ajouter d'autres ensuite. On
 -- garde toutes les entrées (pas d'écrasement) pour pouvoir afficher
 -- l'évolution du remplissage ET de l'indice de difficulté dans le temps.
--- Uniquement pertinent pour les vols "rich" (AF/KL/Transavia) — pour les
--- vols "basic", pas de remplissage détaillé disponible.
+-- Uniquement pertinent pour les vols "rich" (AF/Transavia) — pour les
+-- vols "basic" (KLM y compris), pas de remplissage détaillé disponible.
 create table if not exists flight_load_updates (
   id uuid primary key default gen_random_uuid(),
   flight_id uuid not null references flights(id) on delete cascade,

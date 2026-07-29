@@ -2,12 +2,19 @@
 
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { CABIN_CLASSES } from '@/lib/constants';
+import { getCabinClasses } from '@/lib/constants';
 
-export default function ResolvePanel({ flightId }: { flightId: string }) {
+export default function ResolvePanel({
+  flightId,
+  airlineCode,
+}: {
+  flightId: string;
+  airlineCode: string | null;
+}) {
   const router = useRouter();
+  const cabinClasses = getCabinClasses(airlineCode);
   const [boarded, setBoarded] = useState(true);
-  const [cabinClass, setCabinClass] = useState(CABIN_CLASSES[0]);
+  const [cabinClass, setCabinClass] = useState(cabinClasses[0]);
   const [seats, setSeats] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -70,7 +77,7 @@ export default function ResolvePanel({ flightId }: { flightId: string }) {
             onChange={(e) => setCabinClass(e.target.value)}
             className="rounded-md border border-navy-line bg-navy px-3 py-2 text-text-primary"
           >
-            {CABIN_CLASSES.map((c) => (
+            {cabinClasses.map((c) => (
               <option key={c} value={c}>
                 {c}
               </option>

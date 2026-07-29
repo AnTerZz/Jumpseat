@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { CABIN_CLASSES, TICKET_TYPES } from '@/lib/constants';
+import { getCabinClasses, TICKET_TYPES } from '@/lib/constants';
 import { getDataTier } from '@/lib/difficulty';
 
 export default function NewFlightPage({ params }: { params: { leagueId: string } }) {
@@ -42,6 +42,7 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
   }
 
   const dataTier = info ? getDataTier(info.airlineCode) : 'basic';
+  const cabinClasses = getCabinClasses(info?.airlineCode);
 
   async function handleConfirm() {
     setSaving(true);
@@ -137,7 +138,7 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
           {dataTier === 'rich' ? (
             <>
               <div>
-                <label className="mb-1 block text-xs uppercase tracking-wide text-text-muted">
+                <label className="mb-1 block text-xs uppercase tracking-wide text-teal">
                   Type de billet R2
                 </label>
                 <select
@@ -154,8 +155,8 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
               </div>
 
               <div>
-                <label className="mb-1 block text-xs uppercase tracking-wide text-text-muted">
-                  Remplissage constaté maintenant
+                <label className="mb-1 block text-xs uppercase tracking-wide text-teal">
+                  Remplissage
                 </label>
                 <table className="w-full text-sm">
                   <thead>
@@ -167,7 +168,7 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
                     </tr>
                   </thead>
                   <tbody>
-                    {CABIN_CLASSES.map((cabin) => (
+                    {cabinClasses.map((cabin) => (
                       <tr key={cabin}>
                         <td className="py-1 pr-2 text-text-primary">{cabin}</td>
                         <td className="py-1 pr-2">
@@ -216,14 +217,9 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
                     ))}
                   </tbody>
                 </table>
-                <p className="mt-1 text-xs text-text-muted">
-                  Obligatoire pour Air France / KLM / Transavia, pour donner une base aux autres
-                  joueurs et calculer l&apos;indice de difficulté. Laisse à 0 ce que tu ne connais pas.
-                  PAD = nombre de standby en attente sur cette cabine.
-                </p>
 
-                <div>
-                  <label className="mb-1 block text-xs uppercase tracking-wide text-text-muted">
+                <div className="mt-3">
+                  <label className="mb-1 block text-xs uppercase tracking-wide text-teal">
                     Nombre de R1
                   </label>
                   <input
@@ -234,18 +230,14 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
                     placeholder="0"
                     className="w-32 rounded-md border border-navy-line bg-navy px-2 py-1 text-text-primary placeholder:text-text-muted"
                   />
-                  <p className="mt-1 text-xs text-text-muted">
-                    Les R1 passent devant les R2 : plus il y en a, plus le surclassement est
-                    difficile.
-                  </p>
                 </div>
               </div>
             </>
           ) : (
             <p className="text-xs text-text-muted">
-              Compagnie hors AF/KLM/Transavia : pas de type de billet à préciser ni de remplissage
-              à saisir, seul le pari embarque/n&apos;embarque pas sera proposé. Vérifie juste que
-              les informations du vol ci-dessus sont correctes.
+              Compagnie hors Air France/Transavia : pas de type de billet à préciser ni de
+              remplissage à saisir, seul le pari embarque/n&apos;embarque pas sera proposé.
+              Vérifie juste que les informations du vol ci-dessus sont correctes.
             </p>
           )}
 

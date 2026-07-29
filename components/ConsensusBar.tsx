@@ -1,4 +1,11 @@
 import { CABIN_CLASSES } from '@/lib/constants';
+import PieChart from './PieChart';
+
+const CABIN_COLORS: Record<string, string> = {
+  Business: '#FFB627',
+  'Premium Economy': '#3DD6C7',
+  Economy: '#3ECB7A',
+};
 
 export default function ConsensusBar({ bets }: { bets: any[] }) {
   if (bets.length === 0) {
@@ -9,9 +16,10 @@ export default function ConsensusBar({ bets }: { bets: any[] }) {
   const boardedPct = Math.round((boardedCount / bets.length) * 100);
 
   const classCounts = CABIN_CLASSES.map((cabin) => ({
-    cabin,
-    count: bets.filter((b) => b.predicted_boarded && b.predicted_class === cabin).length,
-  })).filter((c) => c.count > 0);
+    label: cabin,
+    value: bets.filter((b) => b.predicted_boarded && b.predicted_class === cabin).length,
+    color: CABIN_COLORS[cabin] ?? '#8792A6',
+  })).filter((c) => c.value > 0);
 
   return (
     <div className="space-y-3">
@@ -27,19 +35,10 @@ export default function ConsensusBar({ bets }: { bets: any[] }) {
 
       {classCounts.length > 0 && (
         <div>
-          <p className="mb-1 text-xs text-text-muted">Classe pronostiquée (parmi ceux qui pensent qu&apos;il embarque)</p>
-          {classCounts.map(({ cabin, count }) => (
-            <div key={cabin} className="mb-1 flex items-center gap-2 text-xs text-text-muted">
-              <span className="w-28 truncate">{cabin}</span>
-              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-navy">
-                <div
-                  className="h-full bg-teal"
-                  style={{ width: `${Math.round((count / bets.length) * 100)}%` }}
-                />
-              </div>
-              <span>{count}</span>
-            </div>
-          ))}
+          <p className="mb-2 text-xs text-text-muted">
+            Classe pronostiquée (parmi ceux qui pensent qu&apos;il embarque)
+          </p>
+          <PieChart data={classCounts} />
         </div>
       )}
     </div>

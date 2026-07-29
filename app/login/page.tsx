@@ -115,7 +115,7 @@ function LoginForm() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="prenom.nom@airfranceklm.com"
+              placeholder="name@domain.com"
               className="w-full rounded-md border border-navy-line bg-navy-panel px-3 py-2 text-text-primary outline-none placeholder:text-text-muted focus:border-amber"
               required
             />

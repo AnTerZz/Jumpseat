@@ -129,12 +129,10 @@ export default async function FlightPage({
       <p className="mb-1 text-text-primary">
         {flight.origin ?? '?'} → {flight.destination ?? '?'}
       </p>
-      <p className="mb-6 text-text-muted">
+      <p className="mb-6 text-text-primary">
         Départ : {new Date(flight.scheduled_departure).toLocaleString('fr-FR')} ·{' '}
         {flight.aircraft_type ?? 'appareil inconnu'}
       </p>
-
-      {phase === 'open' && <BetPanel flightId={flight.id} existingBet={myBet} />}
 
       {flight.status === 'resolved' ? (
         <div className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">
@@ -147,11 +145,11 @@ export default async function FlightPage({
           </p>
         </div>
       ) : (
-        <div className="mb-6 flex items-center justify-between text-xs uppercase tracking-wide text-text-muted">
-          <span>
+        <div className="mb-6 flex items-center justify-between text-xs uppercase tracking-wide">
+          <span className={phase === 'open' ? 'text-amber/70' : phase === 'betting_closed' ? 'text-teal/70' : 'text-text-muted'}>
             {FLIGHT_PHASE_LABELS[phase]}
             {isCreator && phase !== 'awaiting_result' && phase !== 'resolved' && (
-              <span className="ml-2 font-normal normal-case">
+              <span className="ml-2 font-normal normal-case text-text-muted">
                 (tu pourras renseigner le résultat une fois le vol décollé)
               </span>
             )}
@@ -160,7 +158,13 @@ export default async function FlightPage({
         </div>
       )}
 
-      {isCreator && phase === 'awaiting_result' && <ResolvePanel flightId={flight.id} />}
+      {isCreator && phase === 'awaiting_result' && (
+        <ResolvePanel flightId={flight.id} airlineCode={flight.airline_code} />
+      )}
+
+      {phase === 'open' && (
+        <BetPanel flightId={flight.id} existingBet={myBet} airlineCode={flight.airline_code} />
+      )}
 
       {latestLoad?.seats_by_cabin && Object.keys(latestLoad.seats_by_cabin).length > 0 && (
         <div className="mb-6 rounded-lg border-2 border-teal/60 bg-navy-panel p-4">
@@ -228,7 +232,7 @@ export default async function FlightPage({
       )}
 
       {flight.data_tier === 'rich' && flight.status !== 'resolved' && (
-        <LoadUpdateForm flightId={flight.id} />
+        <LoadUpdateForm flightId={flight.id} airlineCode={flight.airline_code} />
       )}
 
       <div className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">

@@ -82,18 +82,20 @@ heuristique basée sur :
 
 1. **Sièges restants** dans la cabine pertinente selon le type de billet
    (`getRelevantCabins` dans `lib/difficulty.ts`).
-2. **R1** : embarquent toujours avant les R2, donc retirés des sièges
-   disponibles avant tout calcul (`seatsAfterR1 = seatsLeft - r1Count`).
-3. **PAD (standby en attente) + ancienneté du posteur** → rang estimé dans
+2. **PAD (standby en attente) + ancienneté du posteur** → rang estimé dans
    la file :
    - **30 ans d'ancienneté ou plus = tête de file (percentile 0).**
    - **0 an d'ancienneté = ~80% de la file devant soi (percentile 80).**
    - Variation **linéaire** entre les deux
      (`SENIORITY_TOP_YEARS = 30`, `SENIORITY_ZERO_PERCENTILE = 80`).
    - Rang estimé = `percentile/100 × PAD`.
-4. **Marge** = sièges disponibles après R1 − rang estimé. Positif = plutôt
-   favorable.
-5. **Seuil nécessaire pour un 50/50, linéaire dans le temps** (remplace
+3. **Marge** = sièges restants − rang estimé. Positif = plutôt favorable.
+   **R1 n'intervient pas ici** : les R1 sont déjà comptés dans "vendus" (donc
+   déjà déduits des sièges restants) — les retirer une deuxième fois serait
+   un double comptage. `r1Count` reste dans la signature de `computePBoard`
+   pour un usage futur (voir plus bas), mais n'affecte pas la marge
+   aujourd'hui.
+4. **Seuil nécessaire pour un 50/50, linéaire dans le temps** (remplace
    l'ancienne fonction logistique) : à 1 mois (720h) du décollage, il faut
    une marge d'au moins **30% de la capacité de la cabine** pertinente
    au-delà du rang estimé pour être à 50/50 (`REQUIRED_BUFFER_FRACTION_AT_1_MONTH`,
@@ -103,8 +105,8 @@ heuristique basée sur :
    de la capacité de la cabine) est ensuite converti linéairement en
    probabilité autour de 50% (`PROBABILITY_SLOPE`, calibré pour qu'un écart
    de ±50% de la capacité atteigne les bornes ci-dessous).
-6. Bornée à `[5%, 95%]` — jamais de certitude absolue affichée.
-7. Compagnie "basic" ou aucun remplissage renseigné → 50% neutre
+5. Bornée à `[5%, 95%]` — jamais de certitude absolue affichée.
+6. Compagnie "basic" ou aucun remplissage renseigné → 50% neutre
    (`NO_DATA_PBOARD`).
 
 Ancienneté utilisée : **celle du posteur du vol** (la personne qui tente
@@ -121,6 +123,11 @@ d'embarquer), pas celle du parieur.
 - **PBoard** lui-même : heuristique, pas un modèle fitté. Objectif = le
   remplacer par une vraie régression logistique une fois assez de données
   réelles collectées (voir plus bas).
+- **Effet propre des R1 sur la probabilité de surclassement** : les R1 sont
+  déjà pris en compte via "vendus" pour l'embarquement, mais ils réduisent
+  aussi légèrement la probabilité de surclassement (R2 Premium/Business/R2S)
+  d'une façon qui n'est pas encore modélisée — à tackler plus tard, une fois
+  qu'on s'attaque à `PClass`.
 
 ## Collecte de données — plan
 
@@ -131,6 +138,13 @@ H-2, réel au départ), ~36% en période de vacances scolaires. Aucune donnée
 individuelle (que de l'agrégé : sièges vendus/capacité/PAD par cabine,
 nombre de R1, nombre total de personnel souhaitant embarquer) — pas de
 souci de confidentialité.
+
+**À noter** : KLM est repassée en "basic" (plus de remplissage suivi pour
+cette compagnie, voir plus haut) — les 50 lignes KLM du template ne
+correspondent donc plus à une compagnie suivie par l'app. Elles restent
+utilisables pour un modèle générique si tu veux garder KLM dans les données
+d'entraînement malgré tout, sinon il faudra régénérer le template avec plus
+de vols AF/Transavia à la place.
 
 **Pourquoi pas de données par personne** : impossible à obtenir côté
 utilisateur ; le modèle se construit donc sur des **taux d'embarquement
@@ -162,8 +176,8 @@ remplir progressivement, puis fitter.
 3. Crédit partiel sur les sièges (pas de tout-ou-rien).
 4. Formule = `TimeMultiplier × (a·Board + b·Class + c·Seats)`, pas une
    simple somme de bonus indépendants.
-5. Compagnies hors AF/KL/Transavia ("basic") : pas de modèle possible (pas
-   de remplissage visible) → seul `TimeMultiplier × boardWeight × oddsTerm`
+5. Compagnies hors Air France/Transavia ("basic", KLM y compris depuis son
+   passage en basic) : pas de modèle possible (pas de remplissage visible) → seul `TimeMultiplier × boardWeight × oddsTerm`
    avec P neutre (50%) s'applique, pas de classe/sièges (déjà la règle du
    jeu existante). Concrètement, `P = 50%` donne un `oddsTerm` **fixe** de 2
    (`1/0.5`), identique pour tous les paris "basic" corrects — aucune

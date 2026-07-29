@@ -2,10 +2,17 @@
 
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { CABIN_CLASSES } from '@/lib/constants';
+import { getCabinClasses } from '@/lib/constants';
 
-export default function LoadUpdateForm({ flightId }: { flightId: string }) {
+export default function LoadUpdateForm({
+  flightId,
+  airlineCode,
+}: {
+  flightId: string;
+  airlineCode: string | null;
+}) {
   const router = useRouter();
+  const cabinClasses = getCabinClasses(airlineCode);
   const [open, setOpen] = useState(false);
   const [seatsByCabin, setSeatsByCabin] = useState<
     Record<string, { sold: string; capacity: string; pad: string }>
@@ -75,7 +82,7 @@ export default function LoadUpdateForm({ flightId }: { flightId: string }) {
           </tr>
         </thead>
         <tbody>
-          {CABIN_CLASSES.map((cabin) => (
+          {cabinClasses.map((cabin) => (
             <tr key={cabin}>
               <td className="py-1 pr-2 text-text-primary">{cabin}</td>
               <td className="py-1 pr-2">

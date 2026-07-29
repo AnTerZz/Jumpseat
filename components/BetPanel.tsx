@@ -2,13 +2,22 @@
 
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { CABIN_CLASSES, POINTS } from '@/lib/constants';
+import { getCabinClasses, POINTS } from '@/lib/constants';
 
-export default function BetPanel({ flightId, existingBet }: { flightId: string; existingBet: any }) {
+export default function BetPanel({
+  flightId,
+  existingBet,
+  airlineCode,
+}: {
+  flightId: string;
+  existingBet: any;
+  airlineCode: string | null;
+}) {
   const router = useRouter();
+  const cabinClasses = getCabinClasses(airlineCode);
   const [editing, setEditing] = useState(false);
   const [boarded, setBoarded] = useState<boolean>(existingBet?.predicted_boarded ?? true);
-  const [cabinClass, setCabinClass] = useState<string>(existingBet?.predicted_class ?? CABIN_CLASSES[0]);
+  const [cabinClass, setCabinClass] = useState<string>(existingBet?.predicted_class ?? cabinClasses[0]);
   const [seats, setSeats] = useState<string>(existingBet?.predicted_seats_remaining?.toString() ?? '');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +25,7 @@ export default function BetPanel({ flightId, existingBet }: { flightId: string; 
   if (existingBet && !editing) {
     const nextPenaltyPct = Math.round((1 - Math.pow(1 - POINTS.betChangePenaltyPerEdit, existingBet.edit_count + 1)) * 100);
     return (
-      <div className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">
+      <div className="mb-6 rounded-lg border-2 border-amber/50 bg-navy-panel p-4">
         <p className="mb-1 text-sm font-medium text-text-primary">Ton pronostic</p>
         <p className="text-text-primary">
           {existingBet.predicted_boarded
@@ -113,7 +122,7 @@ export default function BetPanel({ flightId, existingBet }: { flightId: string; 
             onChange={(e) => setCabinClass(e.target.value)}
             className="rounded-md border border-navy-line bg-navy px-3 py-2 text-text-primary"
           >
-            {CABIN_CLASSES.map((c) => (
+            {cabinClasses.map((c) => (
               <option key={c} value={c}>
                 {c}
               </option>

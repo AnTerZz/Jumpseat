@@ -2,9 +2,15 @@
 // NEXT_PUBLIC_APP_NAME une fois le nom définitif choisi.
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Jump Seat';
 
-// Ajuste cette liste selon les configurations cabine réelles AF / KLM
+// Ajuste cette liste selon les configurations cabine réelles AF
 // (tu peux aussi la faire dépendre du type d'appareil si besoin plus tard).
 export const CABIN_CLASSES = ['Business', 'Premium Economy', 'Economy'];
+
+// Transavia (TO) ne vend que de l'Économie : pas de Business/Premium.
+export function getCabinClasses(airlineCode: string | null | undefined): string[] {
+  if (airlineCode?.toUpperCase() === 'TO') return ['Economy'];
+  return CABIN_CLASSES;
+}
 
 // Type de billet R2 acheté pour ce vol précis — détermine la logique de
 // priorité/surclassement et sert de base à l'indice de difficulté (voir
@@ -16,11 +22,12 @@ export const TICKET_TYPES = [
   { value: 'r2s', label: 'R2S (vocation surclassement)' },
 ] as const;
 
-// Niveau d'information disponible selon la compagnie : "rich" pour AF/KLM/
+// Niveau d'information disponible selon la compagnie : "rich" pour AF et
 // Transavia (remplissage saisi manuellement par l'équipe), "basic" pour les
-// autres compagnies (embarque/n'embarque pas + surclassement rare seulement).
+// autres compagnies (KLM y compris) — embarque/n'embarque pas + surclassement
+// rare seulement.
 export const DATA_TIERS = ['rich', 'basic'] as const;
-export const RICH_TIER_AIRLINE_CODES = ['AF', 'KL', 'TO']; // Air France, KLM, Transavia
+export const RICH_TIER_AIRLINE_CODES = ['AF', 'TO']; // Air France, Transavia
 
 // Barème : points = TimeMultiplier x (boardWeight x BoardOddsTerm +
 // classWeight x ClassTerm + seatsWeight x SeatsTerm), 0 si le pronostic

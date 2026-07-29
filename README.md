@@ -106,7 +106,7 @@ créer ou rejoindre une ligue sans l'avoir renseignée.
 
 ## 5. Source des données de vol
 
-**Air France, KLM, Transavia** (`data_tier = 'rich'`) : lookup automatique
+**Air France et Transavia** (`data_tier = 'rich'`) : lookup automatique
 (horaires, type d'appareil) via `lib/flightApi.ts`, branché sur AeroDataBox
 via le proxy **[API.market](https://api.market)** (`prod.api.market/api/v1/aedbx/aerodatabox/...`,
 en-tête `x-api-market-key`). Attention : les clés **API.market** (format
@@ -117,16 +117,18 @@ directement, il faut adapter l'URL/en-tête dans `lib/flightApi.ts` (commentaire
 en tête de fichier).
 
 Le remplissage détaillé (sièges vendus/restants par cabine, PAD, R1)
-n'existe sur aucune API publique : pour ces trois compagnies, l'info est
+n'existe sur aucune API publique : pour ces deux compagnies, l'info est
 saisie manuellement à la création du vol puis mise à jour au fil du temps
-(section 7).
+(section 7). Transavia ne vend que de l'Économie : le formulaire de
+remplissage ne propose que cette cabine pour ses vols
+(`lib/constants.ts` → `getCabinClasses`).
 
-**Autres compagnies** (`data_tier = 'basic'`) : lookup toujours automatique
-pour les horaires/type d'appareil, mais le pari se limite à embarque/pas
-embarque — pas de pari sur la classe ni les sièges, faute de visibilité sur
-le remplissage. Le tier est déduit du code compagnie (`lib/difficulty.ts` →
-`getDataTier`), lui-même tiré de la réponse API ou, à défaut, du préfixe du
-numéro de vol.
+**Autres compagnies, y compris KLM** (`data_tier = 'basic'`) : lookup
+toujours automatique pour les horaires/type d'appareil, mais le pari se
+limite à embarque/pas embarque — pas de pari sur la classe ni les sièges,
+faute de visibilité sur le remplissage. Le tier est déduit du code compagnie
+(`lib/difficulty.ts` → `getDataTier`), lui-même tiré de la réponse API ou, à
+défaut, du préfixe du numéro de vol.
 
 ## 6. Types de billet R2 et priorité GP
 
@@ -196,7 +198,9 @@ contient un gabarit de 100 vols réels AF/KLM (remplissage agrégé à
 plusieurs instants, sans aucune donnée individuelle) à remplir
 progressivement — voir `SCORING.md` pour le plan complet (comment le
 remplir, comment fitter un modèle simple à partir de ça, comment
-réentraîner ensuite sur les données réelles de l'app).
+réentraîner ensuite sur les données réelles de l'app). Les lignes KLM
+datent d'avant son passage en "basic" (section 5) : encore utilisables mais
+plus vraiment représentatives de ce que l'app suit désormais.
 
 ## 9. Ligues (groupes)
 

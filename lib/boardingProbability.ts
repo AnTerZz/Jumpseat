@@ -4,10 +4,15 @@
 //
 // Combine : sièges restants dans la cabine pertinente, nombre de standby en
 // attente (PAD) pondéré par le rang estimé du posteur dans cette file (via
-// son ancienneté), nombre de R1 (priorité absolue devant les R2, réduit donc
-// les sièges disponibles), et le temps restant avant le décollage (plus loin
-// dans le temps, plus l'estimation reste prudente/proche de 50%, puisque le
+// son ancienneté), et le temps restant avant le décollage (plus loin dans le
+// temps, plus l'estimation reste prudente/proche de 50%, puisque le
 // remplissage peut encore beaucoup bouger).
+//
+// Note sur R1 : les R1 sont déjà comptés dans "vendus" (donc déjà déduits
+// des sièges restants) — ne pas les retirer une deuxième fois ici. Leur
+// seul effet propre (légère baisse de la probabilité de surclassement) sera
+// modélisé plus tard ; `r1Count` est conservé dans la signature pour ça,
+// mais n'entre pas encore dans le calcul de la marge ci-dessous.
 //
 // Toutes les constantes ci-dessous sont des hypothèses de départ, pas des
 // valeurs calibrées — à remplacer une fois le modèle réel disponible.
@@ -95,13 +100,12 @@ export function computePBoard({
   }
   if (!hasData) return NO_DATA_PBOARD;
 
-  // Les R1 embarquent avant tout R2 : on retire leur nombre des sièges
-  // disponibles avant de raisonner sur la file R2.
-  const seatsAfterR1 = Math.max(0, seatsLeft - (r1Count ?? 0));
-
+  // r1Count n'intervient pas ici : les R1 sont déjà reflétés dans "vendus"
+  // (voir note en tête de fichier). Paramètre conservé pour le futur calcul
+  // de probabilité de surclassement.
   const pct = seniorityPercentile(posterSeniorityDate); // 0-80
   const estimatedRank = (pct / 100) * pad;
-  const margin = seatsAfterR1 - estimatedRank; // sièges disponibles au-delà de son rang estimé
+  const margin = seatsLeft - estimatedRank; // sièges disponibles au-delà de son rang estimé
 
   const totalCapacity = cabins.reduce((sum, cabin) => sum + (seatsByCabin[cabin]?.capacity ?? 0), 0);
   const hoursLeft = Math.max(

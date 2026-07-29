@@ -96,7 +96,7 @@ export default async function LeagueLeaderboardPage({ params }: { params: { leag
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-6 font-display text-2xl text-text-primary">Classement — {league.name}</h1>
+      <h1 className="mb-6 font-display text-2xl text-text-primary">Classements — {league.name}</h1>
 
       <h2 className="mb-2 font-display text-sm uppercase tracking-wide text-text-muted">Points</h2>
       <ol className="mb-8 overflow-hidden rounded-lg border border-navy-line bg-navy-panel">
@@ -135,15 +135,12 @@ export default async function LeagueLeaderboardPage({ params }: { params: { leag
         ))}
         {distanceRanking.length === 0 && (
           <li className="px-4 py-8 text-center text-text-muted">
-            Pas encore de vol embarqué et résolu dans cette ligue.
+            Il n&apos;y a pas encore de vol embarqué et résolu dans cette ligue.
           </li>
         )}
       </ol>
 
-      <h2 className="mb-2 mt-8 font-display text-sm uppercase tracking-wide text-text-muted">
-        Petits tops
-      </h2>
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="mt-8 grid gap-3 sm:grid-cols-3">
         <div className="rounded-lg border border-navy-line bg-navy-panel p-4 text-center">
           <p className="text-xs uppercase tracking-wide text-text-muted">Le plus souvent refusé</p>
           <p className="mt-1 text-lg font-semibold text-denied">{topNotBoarded?.pseudo ?? '—'}</p>
