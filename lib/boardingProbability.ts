@@ -47,10 +47,13 @@ const MAX_PROBABILITY = 0.95;
 // À 1 mois (720h) du décollage, il faut une marge de 30% de la capacité de
 // la cabine pertinente au-delà du rang estimé pour être à 50/50 (le
 // remplissage peut encore beaucoup bouger d'ici le départ). Ce seuil
-// diminue linéairement jusqu'à 0% le jour du décollage (la situation est
-// alors figée : être pile à son rang suffit pour un 50/50).
+// diminue linéairement jusqu'à 0% à 24h du décollage : dans les dernières
+// 24h, la situation est figée, donc être pile à son rang (marge nulle)
+// suffit pour un 50/50, et le moindre surbooking (marge négative) fait
+// tomber sous 50%.
 export const REQUIRED_BUFFER_FRACTION_AT_1_MONTH = 0.3;
 export const BUFFER_HORIZON_HOURS = 30 * 24; // 1 mois
+export const ZERO_BUFFER_HORIZON_HOURS = 24; // 1 jour : marge nulle = 50/50 à partir de là
 
 // Pente linéaire : de combien un écart par rapport au seuil (exprimé en %
 // de la capacité de la cabine) fait varier la probabilité autour de 50%.
@@ -59,8 +62,9 @@ export const BUFFER_HORIZON_HOURS = 30 * 24; // 1 mois
 export const PROBABILITY_SLOPE = 0.9;
 
 function requiredBufferFraction(hoursLeft: number): number {
-  const t = Math.max(0, Math.min(1, hoursLeft / BUFFER_HORIZON_HOURS));
-  return REQUIRED_BUFFER_FRACTION_AT_1_MONTH * t;
+  const t =
+    (hoursLeft - ZERO_BUFFER_HORIZON_HOURS) / (BUFFER_HORIZON_HOURS - ZERO_BUFFER_HORIZON_HOURS);
+  return REQUIRED_BUFFER_FRACTION_AT_1_MONTH * clamp(t, 0, 1);
 }
 
 function clamp(value: number, min: number, max: number): number {

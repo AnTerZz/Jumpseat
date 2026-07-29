@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { getCabinClasses } from '@/lib/constants';
+import RemplissagePasteBox from './RemplissagePasteBox';
 
 export default function LoadUpdateForm({
   flightId,
@@ -72,6 +73,12 @@ export default function LoadUpdateForm({
   return (
     <form onSubmit={handleSubmit} className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">
       <p className="mb-3 text-sm font-medium text-text-primary">Nouveau constat de remplissage</p>
+      {airlineCode === 'AF' && (
+        <RemplissagePasteBox
+          cabinClasses={cabinClasses}
+          onExtracted={(data) => setSeatsByCabin((prev) => ({ ...prev, ...data }))}
+        />
+      )}
       <table className="mb-3 w-full text-sm">
         <thead>
           <tr className="text-left text-xs uppercase tracking-wide text-text-muted">

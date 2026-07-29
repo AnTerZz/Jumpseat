@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { getCabinClasses, TICKET_TYPES } from '@/lib/constants';
 import { getDataTier } from '@/lib/difficulty';
+import RemplissagePasteBox from '@/components/RemplissagePasteBox';
 
 export default function NewFlightPage({ params }: { params: { leagueId: string } }) {
   const router = useRouter();
@@ -158,6 +159,14 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
                 <label className="mb-1 block text-xs uppercase tracking-wide text-teal">
                   Remplissage
                 </label>
+                {info.airlineCode === 'AF' && (
+                  <RemplissagePasteBox
+                    cabinClasses={cabinClasses}
+                    onExtracted={(data) =>
+                      setSeatsByCabin((prev) => ({ ...prev, ...data }))
+                    }
+                  />
+                )}
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left text-xs uppercase tracking-wide text-text-muted">
