@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getSupabase } from '@/lib/supabaseServer';
 import { getCurrentUser } from '@/lib/currentUser';
-import { computeBetPoints } from '@/lib/points';
+import { computeBetPoints, findLoadAsOf } from '@/lib/points';
+import type { TicketType, DataTier } from '@/lib/difficulty';
 
 export async function PATCH(request: Request, { params }: { params: { id: string } }) {
   const user = await getCurrentUser();
@@ -37,16 +38,39 @@ export async function PATCH(request: Request, { params }: { params: { id: string
 
   const resolvedFlight = {
     created_by: flight.created_by,
+    ticket_type: flight.ticket_type as TicketType | null,
+    data_tier: flight.data_tier as DataTier,
     scheduled_departure: flight.scheduled_departure,
     actual_boarded: actualBoarded,
     actual_class: actualBoarded ? actualClass ?? null : null,
     actual_seats_remaining: actualBoarded ? actualSeatsRemaining ?? null : null,
   };
 
+  // Ancienneté du posteur (pas du parieur !) : c'est sa position dans la
+  // file d'attente PAD qui détermine P(embarque).
+  const { data: posterProfile } = await supabase
+    .from('profiles')
+    .select('seniority_date')
+    .eq('id', flight.created_by)
+    .maybeSingle();
+
+  // Historique complet du remplissage, pour reconstruire ce qui était connu
+  // au moment précis de chaque pari (pas le résultat final).
+  const { data: loadHistory } = await supabase
+    .from('flight_load_updates')
+    .select('recorded_at, seats_by_cabin, r1_count')
+    .eq('flight_id', params.id)
+    .order('recorded_at', { ascending: true });
+
   const { data: bets } = await supabase.from('bets').select('*').eq('flight_id', params.id);
 
   for (const bet of bets ?? []) {
-    const points = computeBetPoints(bet as any, resolvedFlight);
+    const points = computeBetPoints(
+      bet as any,
+      resolvedFlight,
+      posterProfile?.seniority_date ?? null,
+      findLoadAsOf((loadHistory ?? []) as any, (bet as any).placed_at)
+    );
     await supabase.from('bets').update({ points_awarded: points }).eq('id', (bet as any).id);
 
     // Le score est par ligue (league_members), pas sur le profil global.

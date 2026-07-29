@@ -74,7 +74,11 @@ create table if not exists flight_load_updates (
   flight_id uuid not null references flights(id) on delete cascade,
   submitted_by uuid not null references profiles(id),
   recorded_at timestamptz not null default now(),
-  seats_by_cabin jsonb not null default '{}'::jsonb, -- ex: {"Economy": {"sold": 120, "capacity": 148}}
+  -- ex: {"Economy": {"sold": 120, "capacity": 148, "pad": 3}} — pad = nombre
+  -- de standby (PAD) en attente sur cette cabine, pour estimer le pool de
+  -- concurrents face au voyageur suivi (voir lib/difficulty.ts).
+  seats_by_cabin jsonb not null default '{}'::jsonb,
+  r1_count integer, -- nombre de R1 (priorité devant les R2) constatés sur ce vol
   difficulty numeric(3, 1), -- indice de difficulté calculé à cet instant (voir lib/difficulty.ts)
   note text,
   created_at timestamptz not null default now()
@@ -90,7 +94,8 @@ create table if not exists bets (
   predicted_class text,
   predicted_seats_remaining integer,
   points_awarded integer,
-  placed_at timestamptz not null default now(),
+  placed_at timestamptz not null default now(), -- mis à jour à chaque modification du pari
+  edit_count integer not null default 0, -- nombre de fois modifié : pénalise les points (voir lib/points.ts)
   unique (flight_id, user_id)
 );
 

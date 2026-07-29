@@ -22,27 +22,44 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Les paris sont clos pour ce vol (H-1h avant le décollage).' }, { status: 409 });
   }
 
-  // Un pari posé ne peut plus être modifié ni écrasé — sinon on pourrait
-  // attendre de voir le remplissage évoluer avant de trancher.
+  // Modifier un pari déjà posé reste possible, mais coûte des points (voir
+  // POINTS.betChangePenaltyPerEdit dans lib/points.ts) : on remonte
+  // placed_at à maintenant (le multiplicateur temporel encaisse déjà une
+  // partie du coût) et on incrémente edit_count pour la pénalité en plus.
   const { data: existing } = await supabase
     .from('bets')
-    .select('id')
+    .select('id, edit_count')
     .eq('flight_id', flightId)
     .eq('user_id', user.id)
     .maybeSingle();
+
+  const predictedClassValue = predictedBoarded ? predictedClass ?? null : null;
+  const predictedSeatsValue = predictedBoarded ? predictedSeatsRemaining ?? null : null;
+
   if (existing) {
-    return NextResponse.json(
-      { error: 'Pronostic déjà enregistré : impossible de le modifier.' },
-      { status: 409 }
-    );
+    const { error } = await supabase
+      .from('bets')
+      .update({
+        predicted_boarded: predictedBoarded,
+        predicted_class: predictedClassValue,
+        predicted_seats_remaining: predictedSeatsValue,
+        placed_at: new Date().toISOString(),
+        edit_count: (existing.edit_count ?? 0) + 1,
+      })
+      .eq('id', existing.id);
+
+    if (error) {
+      return NextResponse.json({ error: "Impossible de modifier le pari." }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true, changed: true });
   }
 
   const { error } = await supabase.from('bets').insert({
     flight_id: flightId,
     user_id: user.id,
     predicted_boarded: predictedBoarded,
-    predicted_class: predictedBoarded ? predictedClass ?? null : null,
-    predicted_seats_remaining: predictedBoarded ? predictedSeatsRemaining ?? null : null,
+    predicted_class: predictedClassValue,
+    predicted_seats_remaining: predictedSeatsValue,
     placed_at: new Date().toISOString(),
   });
 
@@ -50,5 +67,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Impossible d'enregistrer le pari." }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, changed: false });
 }

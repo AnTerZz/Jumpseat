@@ -4,7 +4,7 @@ export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Jump Seat';
 
 // Ajuste cette liste selon les configurations cabine réelles AF / KLM
 // (tu peux aussi la faire dépendre du type d'appareil si besoin plus tard).
-export const CABIN_CLASSES = ['Economy', 'Premium Economy', 'Business', 'La Première'];
+export const CABIN_CLASSES = ['Business', 'Premium Economy', 'Economy'];
 
 // Type de billet R2 acheté pour ce vol précis — détermine la logique de
 // priorité/surclassement et sert de base à l'indice de difficulté (voir
@@ -22,11 +22,28 @@ export const TICKET_TYPES = [
 export const DATA_TIERS = ['rich', 'basic'] as const;
 export const RICH_TIER_AIRLINE_CODES = ['AF', 'KL', 'TO']; // Air France, KLM, Transavia
 
+// Barème : points = TimeMultiplier x (boardWeight x BoardOddsTerm +
+// classWeight x ClassTerm + seatsWeight x SeatsTerm), 0 si le pronostic
+// d'embarquement est faux (voir SCORING.md pour le détail de la formule et
+// le statut de chaque constante ci-dessous — best-guess en attendant un
+// modèle fitté sur des données réelles).
+//
+// Plafond théorique fixé à 100 : TimeMultiplier max (3, voir
+// TIME_MULTIPLIER_TIERS) x (boardWeight x oddsCap + classWeight x (1/CLASS_PROBABILITY)
+// + seatsWeight) = 100. classWeight a été réduit (3.0303 -> 1.0101) quand
+// ClassTerm est passé de "bonus plat" à "cote sur P(classe)=1/3 fixe" — sa
+// propre valeur max ayant triplé (1 -> 3), on divise le poids par 3 pour
+// garder la même part du plafond qu'avant.
 export const POINTS = {
-  boardedCorrect: 10, // bon pronostic "embarque / n'embarque pas"
-  classCorrect: 20, // bonne classe (seulement si l'embarquement était correct)
-  seatsMaxPoints: 30, // pronostic exact du nombre de sièges restants
-  seatsPenaltyPerSeat: 5, // pénalité par siège d'écart (min 0)
+  boardWeight: 4.5455, // "a" — BoardOddsTerm = 1/P(issue), pondéré par le modèle de probabilité
+  classWeight: 1.0101, // "b" — cote sur P(classe) fixe = 1/3 (voir CLASS_PROBABILITY), 0 si faux
+  seatsWeight: 3.0303, // "c" — bonus plat pondéré par la précision (PSeats pas encore modélisée)
+  oddsCap: 6, // plafond de 1/P, pour éviter un score démesuré sur une estimation extrême
+  seatsTolerance: 5, // écart de sièges au-delà duquel il n'y a plus de crédit partiel
+  // Modifier un pari déjà posé coûte cher : facteur multiplicatif composé
+  // par modification (1 modif -> x0.85, 2 -> x0.7225, ...). Dissuade
+  // l'indécision sans l'interdire complètement.
+  betChangePenaltyPerEdit: 0.15,
   // Pas de bonus pour avoir posté un vol : seuls les pronostics rapportent
   // des points. Pas de malus non plus pour un pari sur son propre vol :
   // confirmé que le posteur n'a pas d'avantage d'information particulier

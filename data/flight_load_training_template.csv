@@ -1,0 +1,501 @@
+flight_id,flight_number,airline,origin,destination,aircraft_type,haul_type,departure_date,day_of_week,is_school_holiday,snapshot_label,snapshot_datetime,hours_before_departure,business_sold,business_capacity,business_pad,premium_economy_sold,premium_economy_capacity,premium_economy_pad,economy_sold,economy_capacity,economy_pad,total_staff_wanting_to_board,r1_count,notes
+F001,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-08-14,vendredi,oui,J-14,2026-07-31 19:30,336,,,,,,,,,,,,
+F001,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-08-14,vendredi,oui,J-3,2026-08-11 19:30,72,,,,,,,,,,,,
+F001,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-08-14,vendredi,oui,J-1,2026-08-13 19:30,24,,,,,,,,,,,,
+F001,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-08-14,vendredi,oui,H-2,2026-08-14 17:30,2,,,,,,,,,,,,
+F001,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-08-14,vendredi,oui,Final (au départ),2026-08-14 19:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F002,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-09-16,mercredi,non,J-14,2026-09-02 19:30,336,,,,,,,,,,,,
+F002,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-09-16,mercredi,non,J-3,2026-09-13 19:30,72,,,,,,,,,,,,
+F002,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-09-16,mercredi,non,J-1,2026-09-15 19:30,24,,,,,,,,,,,,
+F002,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-09-16,mercredi,non,H-2,2026-09-16 17:30,2,,,,,,,,,,,,
+F002,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-09-16,mercredi,non,Final (au départ),2026-09-16 19:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F003,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-08-21,vendredi,oui,J-14,2026-08-07 10:35,336,,,,,,,,,,,,
+F003,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-08-21,vendredi,oui,J-3,2026-08-18 10:35,72,,,,,,,,,,,,
+F003,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-08-21,vendredi,oui,J-1,2026-08-20 10:35,24,,,,,,,,,,,,
+F003,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-08-21,vendredi,oui,H-2,2026-08-21 08:35,2,,,,,,,,,,,,
+F003,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-08-21,vendredi,oui,Final (au départ),2026-08-21 10:35,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F004,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-09-23,mercredi,non,J-14,2026-09-09 10:35,336,,,,,,,,,,,,
+F004,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-09-23,mercredi,non,J-3,2026-09-20 10:35,72,,,,,,,,,,,,
+F004,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-09-23,mercredi,non,J-1,2026-09-22 10:35,24,,,,,,,,,,,,
+F004,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-09-23,mercredi,non,H-2,2026-09-23 08:35,2,,,,,,,,,,,,
+F004,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-09-23,mercredi,non,Final (au départ),2026-09-23 10:35,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F005,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-08-28,vendredi,oui,J-14,2026-08-14 13:15,336,,,,,,,,,,,,
+F005,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-08-28,vendredi,oui,J-3,2026-08-25 13:15,72,,,,,,,,,,,,
+F005,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-08-28,vendredi,oui,J-1,2026-08-27 13:15,24,,,,,,,,,,,,
+F005,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-08-28,vendredi,oui,H-2,2026-08-28 11:15,2,,,,,,,,,,,,
+F005,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-08-28,vendredi,oui,Final (au départ),2026-08-28 13:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F006,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-09-30,mercredi,non,J-14,2026-09-16 13:15,336,,,,,,,,,,,,
+F006,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-09-30,mercredi,non,J-3,2026-09-27 13:15,72,,,,,,,,,,,,
+F006,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-09-30,mercredi,non,J-1,2026-09-29 13:15,24,,,,,,,,,,,,
+F006,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-09-30,mercredi,non,H-2,2026-09-30 11:15,2,,,,,,,,,,,,
+F006,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-09-30,mercredi,non,Final (au départ),2026-09-30 13:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F007,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-08-07,vendredi,oui,J-14,2026-07-24 10:15,336,,,,,,,,,,,,
+F007,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-08-07,vendredi,oui,J-3,2026-08-04 10:15,72,,,,,,,,,,,,
+F007,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-08-07,vendredi,oui,J-1,2026-08-06 10:15,24,,,,,,,,,,,,
+F007,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-08-07,vendredi,oui,H-2,2026-08-07 08:15,2,,,,,,,,,,,,
+F007,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-08-07,vendredi,oui,Final (au départ),2026-08-07 10:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F008,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-10-21,mercredi,oui,J-14,2026-10-07 10:15,336,,,,,,,,,,,,
+F008,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-10-21,mercredi,oui,J-3,2026-10-18 10:15,72,,,,,,,,,,,,
+F008,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-10-21,mercredi,oui,J-1,2026-10-20 10:15,24,,,,,,,,,,,,
+F008,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-10-21,mercredi,oui,H-2,2026-10-21 08:15,2,,,,,,,,,,,,
+F008,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-10-21,mercredi,oui,Final (au départ),2026-10-21 10:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F009,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-09-04,vendredi,non,J-14,2026-08-21 07:30,336,,,,n/a,n/a,n/a,,,,,,
+F009,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-09-04,vendredi,non,J-3,2026-09-01 07:30,72,,,,n/a,n/a,n/a,,,,,,
+F009,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-09-04,vendredi,non,J-1,2026-09-03 07:30,24,,,,n/a,n/a,n/a,,,,,,
+F009,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-09-04,vendredi,non,H-2,2026-09-04 05:30,2,,,,n/a,n/a,n/a,,,,,,
+F009,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-09-04,vendredi,non,Final (au départ),2026-09-04 07:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F010,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-13,vendredi,non,J-14,2026-10-30 07:30,336,,,,n/a,n/a,n/a,,,,,,
+F010,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-13,vendredi,non,J-3,2026-11-10 07:30,72,,,,n/a,n/a,n/a,,,,,,
+F010,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-13,vendredi,non,J-1,2026-11-12 07:30,24,,,,n/a,n/a,n/a,,,,,,
+F010,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-13,vendredi,non,H-2,2026-11-13 05:30,2,,,,n/a,n/a,n/a,,,,,,
+F010,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-13,vendredi,non,Final (au départ),2026-11-13 07:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F011,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-09-11,vendredi,non,J-14,2026-08-28 08:10,336,,,,n/a,n/a,n/a,,,,,,
+F011,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-09-11,vendredi,non,J-3,2026-09-08 08:10,72,,,,n/a,n/a,n/a,,,,,,
+F011,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-09-11,vendredi,non,J-1,2026-09-10 08:10,24,,,,n/a,n/a,n/a,,,,,,
+F011,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-09-11,vendredi,non,H-2,2026-09-11 06:10,2,,,,n/a,n/a,n/a,,,,,,
+F011,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-09-11,vendredi,non,Final (au départ),2026-09-11 08:10,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F012,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-24,samedi,oui,J-14,2026-10-10 08:10,336,,,,n/a,n/a,n/a,,,,,,
+F012,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-24,samedi,oui,J-3,2026-10-21 08:10,72,,,,n/a,n/a,n/a,,,,,,
+F012,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-24,samedi,oui,J-1,2026-10-23 08:10,24,,,,n/a,n/a,n/a,,,,,,
+F012,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-24,samedi,oui,H-2,2026-10-24 06:10,2,,,,n/a,n/a,n/a,,,,,,
+F012,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-24,samedi,oui,Final (au départ),2026-10-24 08:10,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F013,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-09-18,vendredi,non,J-14,2026-09-04 09:20,336,,,,n/a,n/a,n/a,,,,,,
+F013,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-09-18,vendredi,non,J-3,2026-09-15 09:20,72,,,,n/a,n/a,n/a,,,,,,
+F013,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-09-18,vendredi,non,J-1,2026-09-17 09:20,24,,,,n/a,n/a,n/a,,,,,,
+F013,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-09-18,vendredi,non,H-2,2026-09-18 07:20,2,,,,n/a,n/a,n/a,,,,,,
+F013,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-09-18,vendredi,non,Final (au départ),2026-09-18 09:20,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F014,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-11-20,vendredi,non,J-14,2026-11-06 09:20,336,,,,n/a,n/a,n/a,,,,,,
+F014,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-11-20,vendredi,non,J-3,2026-11-17 09:20,72,,,,n/a,n/a,n/a,,,,,,
+F014,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-11-20,vendredi,non,J-1,2026-11-19 09:20,24,,,,n/a,n/a,n/a,,,,,,
+F014,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-11-20,vendredi,non,H-2,2026-11-20 07:20,2,,,,n/a,n/a,n/a,,,,,,
+F014,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-11-20,vendredi,non,Final (au départ),2026-11-20 09:20,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F015,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-09-25,vendredi,non,J-14,2026-09-11 11:05,336,,,,n/a,n/a,n/a,,,,,,
+F015,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-09-25,vendredi,non,J-3,2026-09-22 11:05,72,,,,n/a,n/a,n/a,,,,,,
+F015,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-09-25,vendredi,non,J-1,2026-09-24 11:05,24,,,,n/a,n/a,n/a,,,,,,
+F015,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-09-25,vendredi,non,H-2,2026-09-25 09:05,2,,,,n/a,n/a,n/a,,,,,,
+F015,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-09-25,vendredi,non,Final (au départ),2026-09-25 11:05,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F016,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-23,mercredi,oui,J-14,2026-12-09 11:05,336,,,,n/a,n/a,n/a,,,,,,
+F016,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-23,mercredi,oui,J-3,2026-12-20 11:05,72,,,,n/a,n/a,n/a,,,,,,
+F016,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-23,mercredi,oui,J-1,2026-12-22 11:05,24,,,,n/a,n/a,n/a,,,,,,
+F016,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-23,mercredi,oui,H-2,2026-12-23 09:05,2,,,,n/a,n/a,n/a,,,,,,
+F016,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-23,mercredi,oui,Final (au départ),2026-12-23 11:05,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F017,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-08-15,samedi,oui,J-14,2026-08-01 11:15,336,,,,,,,,,,,,
+F017,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-08-15,samedi,oui,J-3,2026-08-12 11:15,72,,,,,,,,,,,,
+F017,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-08-15,samedi,oui,J-1,2026-08-14 11:15,24,,,,,,,,,,,,
+F017,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-08-15,samedi,oui,H-2,2026-08-15 09:15,2,,,,,,,,,,,,
+F017,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-08-15,samedi,oui,Final (au départ),2026-08-15 11:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F018,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-09-19,samedi,non,J-14,2026-09-05 11:15,336,,,,,,,,,,,,
+F018,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-09-19,samedi,non,J-3,2026-09-16 11:15,72,,,,,,,,,,,,
+F018,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-09-19,samedi,non,J-1,2026-09-18 11:15,24,,,,,,,,,,,,
+F018,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-09-19,samedi,non,H-2,2026-09-19 09:15,2,,,,,,,,,,,,
+F018,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-09-19,samedi,non,Final (au départ),2026-09-19 11:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F019,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-08-22,samedi,oui,J-14,2026-08-08 13:40,336,,,,,,,,,,,,
+F019,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-08-22,samedi,oui,J-3,2026-08-19 13:40,72,,,,,,,,,,,,
+F019,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-08-22,samedi,oui,J-1,2026-08-21 13:40,24,,,,,,,,,,,,
+F019,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-08-22,samedi,oui,H-2,2026-08-22 11:40,2,,,,,,,,,,,,
+F019,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-08-22,samedi,oui,Final (au départ),2026-08-22 13:40,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F020,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-06,vendredi,non,J-14,2026-10-23 13:40,336,,,,,,,,,,,,
+F020,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-06,vendredi,non,J-3,2026-11-03 13:40,72,,,,,,,,,,,,
+F020,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-06,vendredi,non,J-1,2026-11-05 13:40,24,,,,,,,,,,,,
+F020,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-06,vendredi,non,H-2,2026-11-06 11:40,2,,,,,,,,,,,,
+F020,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-06,vendredi,non,Final (au départ),2026-11-06 13:40,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F021,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-08-29,samedi,oui,J-14,2026-08-15 14:05,336,,,,,,,,,,,,
+F021,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-08-29,samedi,oui,J-3,2026-08-26 14:05,72,,,,,,,,,,,,
+F021,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-08-29,samedi,oui,J-1,2026-08-28 14:05,24,,,,,,,,,,,,
+F021,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-08-29,samedi,oui,H-2,2026-08-29 12:05,2,,,,,,,,,,,,
+F021,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-08-29,samedi,oui,Final (au départ),2026-08-29 14:05,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F022,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-11-27,vendredi,non,J-14,2026-11-13 14:05,336,,,,,,,,,,,,
+F022,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-11-27,vendredi,non,J-3,2026-11-24 14:05,72,,,,,,,,,,,,
+F022,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-11-27,vendredi,non,J-1,2026-11-26 14:05,24,,,,,,,,,,,,
+F022,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-11-27,vendredi,non,H-2,2026-11-27 12:05,2,,,,,,,,,,,,
+F022,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-11-27,vendredi,non,Final (au départ),2026-11-27 14:05,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F023,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-08-09,dimanche,oui,J-14,2026-07-26 13:30,336,,,,,,,,,,,,
+F023,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-08-09,dimanche,oui,J-3,2026-08-06 13:30,72,,,,,,,,,,,,
+F023,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-08-09,dimanche,oui,J-1,2026-08-08 13:30,24,,,,,,,,,,,,
+F023,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-08-09,dimanche,oui,H-2,2026-08-09 11:30,2,,,,,,,,,,,,
+F023,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-08-09,dimanche,oui,Final (au départ),2026-08-09 13:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F024,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-10-30,vendredi,oui,J-14,2026-10-16 13:30,336,,,,,,,,,,,,
+F024,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-10-30,vendredi,oui,J-3,2026-10-27 13:30,72,,,,,,,,,,,,
+F024,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-10-30,vendredi,oui,J-1,2026-10-29 13:30,24,,,,,,,,,,,,
+F024,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-10-30,vendredi,oui,H-2,2026-10-30 11:30,2,,,,,,,,,,,,
+F024,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-10-30,vendredi,oui,Final (au départ),2026-10-30 13:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F025,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-09-05,samedi,non,J-14,2026-08-22 07:45,336,,,,n/a,n/a,n/a,,,,,,
+F025,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-09-05,samedi,non,J-3,2026-09-02 07:45,72,,,,n/a,n/a,n/a,,,,,,
+F025,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-09-05,samedi,non,J-1,2026-09-04 07:45,24,,,,n/a,n/a,n/a,,,,,,
+F025,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-09-05,samedi,non,H-2,2026-09-05 05:45,2,,,,n/a,n/a,n/a,,,,,,
+F025,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-09-05,samedi,non,Final (au départ),2026-09-05 07:45,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F026,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-14,samedi,non,J-14,2026-10-31 07:45,336,,,,n/a,n/a,n/a,,,,,,
+F026,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-14,samedi,non,J-3,2026-11-11 07:45,72,,,,n/a,n/a,n/a,,,,,,
+F026,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-14,samedi,non,J-1,2026-11-13 07:45,24,,,,n/a,n/a,n/a,,,,,,
+F026,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-14,samedi,non,H-2,2026-11-14 05:45,2,,,,n/a,n/a,n/a,,,,,,
+F026,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-14,samedi,non,Final (au départ),2026-11-14 07:45,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F027,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-09-12,samedi,non,J-14,2026-08-29 08:30,336,,,,n/a,n/a,n/a,,,,,,
+F027,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-09-12,samedi,non,J-3,2026-09-09 08:30,72,,,,n/a,n/a,n/a,,,,,,
+F027,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-09-12,samedi,non,J-1,2026-09-11 08:30,24,,,,n/a,n/a,n/a,,,,,,
+F027,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-09-12,samedi,non,H-2,2026-09-12 06:30,2,,,,n/a,n/a,n/a,,,,,,
+F027,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-09-12,samedi,non,Final (au départ),2026-09-12 08:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F028,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-25,dimanche,oui,J-14,2026-10-11 08:30,336,,,,n/a,n/a,n/a,,,,,,
+F028,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-25,dimanche,oui,J-3,2026-10-22 08:30,72,,,,n/a,n/a,n/a,,,,,,
+F028,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-25,dimanche,oui,J-1,2026-10-24 08:30,24,,,,n/a,n/a,n/a,,,,,,
+F028,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-25,dimanche,oui,H-2,2026-10-25 06:30,2,,,,n/a,n/a,n/a,,,,,,
+F028,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-25,dimanche,oui,Final (au départ),2026-10-25 08:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F029,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-09-19,samedi,non,J-14,2026-09-05 09:50,336,,,,n/a,n/a,n/a,,,,,,
+F029,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-09-19,samedi,non,J-3,2026-09-16 09:50,72,,,,n/a,n/a,n/a,,,,,,
+F029,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-09-19,samedi,non,J-1,2026-09-18 09:50,24,,,,n/a,n/a,n/a,,,,,,
+F029,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-09-19,samedi,non,H-2,2026-09-19 07:50,2,,,,n/a,n/a,n/a,,,,,,
+F029,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-09-19,samedi,non,Final (au départ),2026-09-19 09:50,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F030,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-11-21,samedi,non,J-14,2026-11-07 09:50,336,,,,n/a,n/a,n/a,,,,,,
+F030,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-11-21,samedi,non,J-3,2026-11-18 09:50,72,,,,n/a,n/a,n/a,,,,,,
+F030,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-11-21,samedi,non,J-1,2026-11-20 09:50,24,,,,n/a,n/a,n/a,,,,,,
+F030,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-11-21,samedi,non,H-2,2026-11-21 07:50,2,,,,n/a,n/a,n/a,,,,,,
+F030,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-11-21,samedi,non,Final (au départ),2026-11-21 09:50,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F031,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-09-26,samedi,non,J-14,2026-09-12 10:40,336,,,,n/a,n/a,n/a,,,,,,
+F031,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-09-26,samedi,non,J-3,2026-09-23 10:40,72,,,,n/a,n/a,n/a,,,,,,
+F031,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-09-26,samedi,non,J-1,2026-09-25 10:40,24,,,,n/a,n/a,n/a,,,,,,
+F031,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-09-26,samedi,non,H-2,2026-09-26 08:40,2,,,,n/a,n/a,n/a,,,,,,
+F031,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-09-26,samedi,non,Final (au départ),2026-09-26 10:40,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F032,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-27,dimanche,oui,J-14,2026-12-13 10:40,336,,,,n/a,n/a,n/a,,,,,,
+F032,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-27,dimanche,oui,J-3,2026-12-24 10:40,72,,,,n/a,n/a,n/a,,,,,,
+F032,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-27,dimanche,oui,J-1,2026-12-26 10:40,24,,,,n/a,n/a,n/a,,,,,,
+F032,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-27,dimanche,oui,H-2,2026-12-27 08:40,2,,,,n/a,n/a,n/a,,,,,,
+F032,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-27,dimanche,oui,Final (au départ),2026-12-27 10:40,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F033,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-10-01,jeudi,non,J-14,2026-09-17 19:30,336,,,,,,,,,,,,
+F033,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-10-01,jeudi,non,J-3,2026-09-28 19:30,72,,,,,,,,,,,,
+F033,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-10-01,jeudi,non,J-1,2026-09-30 19:30,24,,,,,,,,,,,,
+F033,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-10-01,jeudi,non,H-2,2026-10-01 17:30,2,,,,,,,,,,,,
+F033,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-10-01,jeudi,non,Final (au départ),2026-10-01 19:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F034,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-11-06,vendredi,non,J-14,2026-10-23 19:30,336,,,,,,,,,,,,
+F034,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-11-06,vendredi,non,J-3,2026-11-03 19:30,72,,,,,,,,,,,,
+F034,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-11-06,vendredi,non,J-1,2026-11-05 19:30,24,,,,,,,,,,,,
+F034,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-11-06,vendredi,non,H-2,2026-11-06 17:30,2,,,,,,,,,,,,
+F034,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-11-06,vendredi,non,Final (au départ),2026-11-06 19:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F035,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-12-12,samedi,non,J-14,2026-11-28 19:30,336,,,,,,,,,,,,
+F035,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-12-12,samedi,non,J-3,2026-12-09 19:30,72,,,,,,,,,,,,
+F035,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-12-12,samedi,non,J-1,2026-12-11 19:30,24,,,,,,,,,,,,
+F035,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-12-12,samedi,non,H-2,2026-12-12 17:30,2,,,,,,,,,,,,
+F035,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2026-12-12,samedi,non,Final (au départ),2026-12-12 19:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F036,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-01-17,dimanche,non,J-14,2027-01-03 19:30,336,,,,,,,,,,,,
+F036,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-01-17,dimanche,non,J-3,2027-01-14 19:30,72,,,,,,,,,,,,
+F036,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-01-17,dimanche,non,J-1,2027-01-16 19:30,24,,,,,,,,,,,,
+F036,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-01-17,dimanche,non,H-2,2027-01-17 17:30,2,,,,,,,,,,,,
+F036,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-01-17,dimanche,non,Final (au départ),2027-01-17 19:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F037,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-02-22,lundi,oui,J-14,2027-02-08 19:30,336,,,,,,,,,,,,
+F037,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-02-22,lundi,oui,J-3,2027-02-19 19:30,72,,,,,,,,,,,,
+F037,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-02-22,lundi,oui,J-1,2027-02-21 19:30,24,,,,,,,,,,,,
+F037,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-02-22,lundi,oui,H-2,2027-02-22 17:30,2,,,,,,,,,,,,
+F037,AF006,AF,CDG,JFK,Boeing 777-300ER,long,2027-02-22,lundi,oui,Final (au départ),2027-02-22 19:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F038,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-10-12,lundi,non,J-14,2026-09-28 10:35,336,,,,,,,,,,,,
+F038,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-10-12,lundi,non,J-3,2026-10-09 10:35,72,,,,,,,,,,,,
+F038,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-10-12,lundi,non,J-1,2026-10-11 10:35,24,,,,,,,,,,,,
+F038,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-10-12,lundi,non,H-2,2026-10-12 08:35,2,,,,,,,,,,,,
+F038,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-10-12,lundi,non,Final (au départ),2026-10-12 10:35,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F039,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-11-26,jeudi,non,J-14,2026-11-12 10:35,336,,,,,,,,,,,,
+F039,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-11-26,jeudi,non,J-3,2026-11-23 10:35,72,,,,,,,,,,,,
+F039,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-11-26,jeudi,non,J-1,2026-11-25 10:35,24,,,,,,,,,,,,
+F039,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-11-26,jeudi,non,H-2,2026-11-26 08:35,2,,,,,,,,,,,,
+F039,AF066,AF,CDG,LAX,Airbus A350-900,long,2026-11-26,jeudi,non,Final (au départ),2026-11-26 10:35,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F040,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-01-10,dimanche,non,J-14,2026-12-27 10:35,336,,,,,,,,,,,,
+F040,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-01-10,dimanche,non,J-3,2027-01-07 10:35,72,,,,,,,,,,,,
+F040,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-01-10,dimanche,non,J-1,2027-01-09 10:35,24,,,,,,,,,,,,
+F040,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-01-10,dimanche,non,H-2,2027-01-10 08:35,2,,,,,,,,,,,,
+F040,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-01-10,dimanche,non,Final (au départ),2027-01-10 10:35,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F041,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-02-24,mercredi,oui,J-14,2027-02-10 10:35,336,,,,,,,,,,,,
+F041,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-02-24,mercredi,oui,J-3,2027-02-21 10:35,72,,,,,,,,,,,,
+F041,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-02-24,mercredi,oui,J-1,2027-02-23 10:35,24,,,,,,,,,,,,
+F041,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-02-24,mercredi,oui,H-2,2027-02-24 08:35,2,,,,,,,,,,,,
+F041,AF066,AF,CDG,LAX,Airbus A350-900,long,2027-02-24,mercredi,oui,Final (au départ),2027-02-24 10:35,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F042,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-10-23,vendredi,oui,J-14,2026-10-09 13:15,336,,,,,,,,,,,,
+F042,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-10-23,vendredi,oui,J-3,2026-10-20 13:15,72,,,,,,,,,,,,
+F042,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-10-23,vendredi,oui,J-1,2026-10-22 13:15,24,,,,,,,,,,,,
+F042,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-10-23,vendredi,oui,H-2,2026-10-23 11:15,2,,,,,,,,,,,,
+F042,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-10-23,vendredi,oui,Final (au départ),2026-10-23 13:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F043,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-12-07,lundi,non,J-14,2026-11-23 13:15,336,,,,,,,,,,,,
+F043,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-12-07,lundi,non,J-3,2026-12-04 13:15,72,,,,,,,,,,,,
+F043,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-12-07,lundi,non,J-1,2026-12-06 13:15,24,,,,,,,,,,,,
+F043,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-12-07,lundi,non,H-2,2026-12-07 11:15,2,,,,,,,,,,,,
+F043,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2026-12-07,lundi,non,Final (au départ),2026-12-07 13:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F044,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-01-21,jeudi,non,J-14,2027-01-07 13:15,336,,,,,,,,,,,,
+F044,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-01-21,jeudi,non,J-3,2027-01-18 13:15,72,,,,,,,,,,,,
+F044,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-01-21,jeudi,non,J-1,2027-01-20 13:15,24,,,,,,,,,,,,
+F044,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-01-21,jeudi,non,H-2,2027-01-21 11:15,2,,,,,,,,,,,,
+F044,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-01-21,jeudi,non,Final (au départ),2027-01-21 13:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F045,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-03-07,dimanche,oui,J-14,2027-02-21 13:15,336,,,,,,,,,,,,
+F045,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-03-07,dimanche,oui,J-3,2027-03-04 13:15,72,,,,,,,,,,,,
+F045,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-03-07,dimanche,oui,J-1,2027-03-06 13:15,24,,,,,,,,,,,,
+F045,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-03-07,dimanche,oui,H-2,2027-03-07 11:15,2,,,,,,,,,,,,
+F045,AF276,AF,CDG,NRT,Boeing 777-300ER,long,2027-03-07,dimanche,oui,Final (au départ),2027-03-07 13:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F046,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-11-03,mardi,non,J-14,2026-10-20 10:15,336,,,,,,,,,,,,
+F046,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-11-03,mardi,non,J-3,2026-10-31 10:15,72,,,,,,,,,,,,
+F046,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-11-03,mardi,non,J-1,2026-11-02 10:15,24,,,,,,,,,,,,
+F046,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-11-03,mardi,non,H-2,2026-11-03 08:15,2,,,,,,,,,,,,
+F046,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-11-03,mardi,non,Final (au départ),2026-11-03 10:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F047,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-12-18,vendredi,non,J-14,2026-12-04 10:15,336,,,,,,,,,,,,
+F047,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-12-18,vendredi,non,J-3,2026-12-15 10:15,72,,,,,,,,,,,,
+F047,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-12-18,vendredi,non,J-1,2026-12-17 10:15,24,,,,,,,,,,,,
+F047,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-12-18,vendredi,non,H-2,2026-12-18 08:15,2,,,,,,,,,,,,
+F047,AF090,AF,CDG,MIA,Boeing 787-9,long,2026-12-18,vendredi,non,Final (au départ),2026-12-18 10:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F048,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-02-01,lundi,non,J-14,2027-01-18 10:15,336,,,,,,,,,,,,
+F048,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-02-01,lundi,non,J-3,2027-01-29 10:15,72,,,,,,,,,,,,
+F048,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-02-01,lundi,non,J-1,2027-01-31 10:15,24,,,,,,,,,,,,
+F048,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-02-01,lundi,non,H-2,2027-02-01 08:15,2,,,,,,,,,,,,
+F048,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-02-01,lundi,non,Final (au départ),2027-02-01 10:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F049,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-03-18,jeudi,non,J-14,2027-03-04 10:15,336,,,,,,,,,,,,
+F049,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-03-18,jeudi,non,J-3,2027-03-15 10:15,72,,,,,,,,,,,,
+F049,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-03-18,jeudi,non,J-1,2027-03-17 10:15,24,,,,,,,,,,,,
+F049,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-03-18,jeudi,non,H-2,2027-03-18 08:15,2,,,,,,,,,,,,
+F049,AF090,AF,CDG,MIA,Boeing 787-9,long,2027-03-18,jeudi,non,Final (au départ),2027-03-18 10:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F050,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-10-09,vendredi,non,J-14,2026-09-25 07:30,336,,,,n/a,n/a,n/a,,,,,,
+F050,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-10-09,vendredi,non,J-3,2026-10-06 07:30,72,,,,n/a,n/a,n/a,,,,,,
+F050,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-10-09,vendredi,non,J-1,2026-10-08 07:30,24,,,,n/a,n/a,n/a,,,,,,
+F050,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-10-09,vendredi,non,H-2,2026-10-09 05:30,2,,,,n/a,n/a,n/a,,,,,,
+F050,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-10-09,vendredi,non,Final (au départ),2026-10-09 07:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F051,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-14,samedi,non,J-14,2026-10-31 07:30,336,,,,n/a,n/a,n/a,,,,,,
+F051,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-14,samedi,non,J-3,2026-11-11 07:30,72,,,,n/a,n/a,n/a,,,,,,
+F051,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-14,samedi,non,J-1,2026-11-13 07:30,24,,,,n/a,n/a,n/a,,,,,,
+F051,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-14,samedi,non,H-2,2026-11-14 05:30,2,,,,n/a,n/a,n/a,,,,,,
+F051,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-11-14,samedi,non,Final (au départ),2026-11-14 07:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F052,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-12-20,dimanche,oui,J-14,2026-12-06 07:30,336,,,,n/a,n/a,n/a,,,,,,
+F052,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-12-20,dimanche,oui,J-3,2026-12-17 07:30,72,,,,n/a,n/a,n/a,,,,,,
+F052,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-12-20,dimanche,oui,J-1,2026-12-19 07:30,24,,,,n/a,n/a,n/a,,,,,,
+F052,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-12-20,dimanche,oui,H-2,2026-12-20 05:30,2,,,,n/a,n/a,n/a,,,,,,
+F052,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2026-12-20,dimanche,oui,Final (au départ),2026-12-20 07:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F053,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-01-25,lundi,non,J-14,2027-01-11 07:30,336,,,,n/a,n/a,n/a,,,,,,
+F053,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-01-25,lundi,non,J-3,2027-01-22 07:30,72,,,,n/a,n/a,n/a,,,,,,
+F053,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-01-25,lundi,non,J-1,2027-01-24 07:30,24,,,,n/a,n/a,n/a,,,,,,
+F053,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-01-25,lundi,non,H-2,2027-01-25 05:30,2,,,,n/a,n/a,n/a,,,,,,
+F053,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-01-25,lundi,non,Final (au départ),2027-01-25 07:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F054,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-03-02,mardi,oui,J-14,2027-02-16 07:30,336,,,,n/a,n/a,n/a,,,,,,
+F054,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-03-02,mardi,oui,J-3,2027-02-27 07:30,72,,,,n/a,n/a,n/a,,,,,,
+F054,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-03-02,mardi,oui,J-1,2027-03-01 07:30,24,,,,n/a,n/a,n/a,,,,,,
+F054,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-03-02,mardi,oui,H-2,2027-03-02 05:30,2,,,,n/a,n/a,n/a,,,,,,
+F054,AF1680,AF,CDG,LHR,Airbus A220-300,medium,2027-03-02,mardi,oui,Final (au départ),2027-03-02 07:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F055,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-11,dimanche,non,J-14,2026-09-27 08:10,336,,,,n/a,n/a,n/a,,,,,,
+F055,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-11,dimanche,non,J-3,2026-10-08 08:10,72,,,,n/a,n/a,n/a,,,,,,
+F055,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-11,dimanche,non,J-1,2026-10-10 08:10,24,,,,n/a,n/a,n/a,,,,,,
+F055,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-11,dimanche,non,H-2,2026-10-11 06:10,2,,,,n/a,n/a,n/a,,,,,,
+F055,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-10-11,dimanche,non,Final (au départ),2026-10-11 08:10,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F056,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-11-25,mercredi,non,J-14,2026-11-11 08:10,336,,,,n/a,n/a,n/a,,,,,,
+F056,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-11-25,mercredi,non,J-3,2026-11-22 08:10,72,,,,n/a,n/a,n/a,,,,,,
+F056,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-11-25,mercredi,non,J-1,2026-11-24 08:10,24,,,,n/a,n/a,n/a,,,,,,
+F056,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-11-25,mercredi,non,H-2,2026-11-25 06:10,2,,,,n/a,n/a,n/a,,,,,,
+F056,AF1148,AF,CDG,BCN,Airbus A320,medium,2026-11-25,mercredi,non,Final (au départ),2026-11-25 08:10,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F057,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-01-09,samedi,non,J-14,2026-12-26 08:10,336,,,,n/a,n/a,n/a,,,,,,
+F057,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-01-09,samedi,non,J-3,2027-01-06 08:10,72,,,,n/a,n/a,n/a,,,,,,
+F057,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-01-09,samedi,non,J-1,2027-01-08 08:10,24,,,,n/a,n/a,n/a,,,,,,
+F057,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-01-09,samedi,non,H-2,2027-01-09 06:10,2,,,,n/a,n/a,n/a,,,,,,
+F057,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-01-09,samedi,non,Final (au départ),2027-01-09 08:10,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F058,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-02-23,mardi,oui,J-14,2027-02-09 08:10,336,,,,n/a,n/a,n/a,,,,,,
+F058,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-02-23,mardi,oui,J-3,2027-02-20 08:10,72,,,,n/a,n/a,n/a,,,,,,
+F058,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-02-23,mardi,oui,J-1,2027-02-22 08:10,24,,,,n/a,n/a,n/a,,,,,,
+F058,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-02-23,mardi,oui,H-2,2027-02-23 06:10,2,,,,n/a,n/a,n/a,,,,,,
+F058,AF1148,AF,CDG,BCN,Airbus A320,medium,2027-02-23,mardi,oui,Final (au départ),2027-02-23 08:10,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F059,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-10-22,jeudi,oui,J-14,2026-10-08 09:20,336,,,,n/a,n/a,n/a,,,,,,
+F059,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-10-22,jeudi,oui,J-3,2026-10-19 09:20,72,,,,n/a,n/a,n/a,,,,,,
+F059,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-10-22,jeudi,oui,J-1,2026-10-21 09:20,24,,,,n/a,n/a,n/a,,,,,,
+F059,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-10-22,jeudi,oui,H-2,2026-10-22 07:20,2,,,,n/a,n/a,n/a,,,,,,
+F059,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-10-22,jeudi,oui,Final (au départ),2026-10-22 09:20,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F060,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-12-06,dimanche,non,J-14,2026-11-22 09:20,336,,,,n/a,n/a,n/a,,,,,,
+F060,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-12-06,dimanche,non,J-3,2026-12-03 09:20,72,,,,n/a,n/a,n/a,,,,,,
+F060,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-12-06,dimanche,non,J-1,2026-12-05 09:20,24,,,,n/a,n/a,n/a,,,,,,
+F060,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-12-06,dimanche,non,H-2,2026-12-06 07:20,2,,,,n/a,n/a,n/a,,,,,,
+F060,AF1404,AF,CDG,FCO,Airbus A319,medium,2026-12-06,dimanche,non,Final (au départ),2026-12-06 09:20,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F061,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-01-20,mercredi,non,J-14,2027-01-06 09:20,336,,,,n/a,n/a,n/a,,,,,,
+F061,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-01-20,mercredi,non,J-3,2027-01-17 09:20,72,,,,n/a,n/a,n/a,,,,,,
+F061,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-01-20,mercredi,non,J-1,2027-01-19 09:20,24,,,,n/a,n/a,n/a,,,,,,
+F061,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-01-20,mercredi,non,H-2,2027-01-20 07:20,2,,,,n/a,n/a,n/a,,,,,,
+F061,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-01-20,mercredi,non,Final (au départ),2027-01-20 09:20,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F062,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-03-06,samedi,oui,J-14,2027-02-20 09:20,336,,,,n/a,n/a,n/a,,,,,,
+F062,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-03-06,samedi,oui,J-3,2027-03-03 09:20,72,,,,n/a,n/a,n/a,,,,,,
+F062,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-03-06,samedi,oui,J-1,2027-03-05 09:20,24,,,,n/a,n/a,n/a,,,,,,
+F062,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-03-06,samedi,oui,H-2,2027-03-06 07:20,2,,,,n/a,n/a,n/a,,,,,,
+F062,AF1404,AF,CDG,FCO,Airbus A319,medium,2027-03-06,samedi,oui,Final (au départ),2027-03-06 09:20,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F063,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-11-02,lundi,oui,J-14,2026-10-19 11:05,336,,,,n/a,n/a,n/a,,,,,,
+F063,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-11-02,lundi,oui,J-3,2026-10-30 11:05,72,,,,n/a,n/a,n/a,,,,,,
+F063,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-11-02,lundi,oui,J-1,2026-11-01 11:05,24,,,,n/a,n/a,n/a,,,,,,
+F063,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-11-02,lundi,oui,H-2,2026-11-02 09:05,2,,,,n/a,n/a,n/a,,,,,,
+F063,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-11-02,lundi,oui,Final (au départ),2026-11-02 11:05,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F064,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-17,jeudi,non,J-14,2026-12-03 11:05,336,,,,n/a,n/a,n/a,,,,,,
+F064,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-17,jeudi,non,J-3,2026-12-14 11:05,72,,,,n/a,n/a,n/a,,,,,,
+F064,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-17,jeudi,non,J-1,2026-12-16 11:05,24,,,,n/a,n/a,n/a,,,,,,
+F064,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-17,jeudi,non,H-2,2026-12-17 09:05,2,,,,n/a,n/a,n/a,,,,,,
+F064,AF1300,AF,CDG,MAD,Airbus A321,medium,2026-12-17,jeudi,non,Final (au départ),2026-12-17 11:05,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F065,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-01-31,dimanche,non,J-14,2027-01-17 11:05,336,,,,n/a,n/a,n/a,,,,,,
+F065,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-01-31,dimanche,non,J-3,2027-01-28 11:05,72,,,,n/a,n/a,n/a,,,,,,
+F065,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-01-31,dimanche,non,J-1,2027-01-30 11:05,24,,,,n/a,n/a,n/a,,,,,,
+F065,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-01-31,dimanche,non,H-2,2027-01-31 09:05,2,,,,n/a,n/a,n/a,,,,,,
+F065,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-01-31,dimanche,non,Final (au départ),2027-01-31 11:05,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F066,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-03-17,mercredi,non,J-14,2027-03-03 11:05,336,,,,n/a,n/a,n/a,,,,,,
+F066,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-03-17,mercredi,non,J-3,2027-03-14 11:05,72,,,,n/a,n/a,n/a,,,,,,
+F066,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-03-17,mercredi,non,J-1,2027-03-16 11:05,24,,,,n/a,n/a,n/a,,,,,,
+F066,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-03-17,mercredi,non,H-2,2027-03-17 09:05,2,,,,n/a,n/a,n/a,,,,,,
+F066,AF1300,AF,CDG,MAD,Airbus A321,medium,2027-03-17,mercredi,non,Final (au départ),2027-03-17 11:05,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F067,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-10-17,samedi,oui,J-14,2026-10-03 11:15,336,,,,,,,,,,,,
+F067,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-10-17,samedi,oui,J-3,2026-10-14 11:15,72,,,,,,,,,,,,
+F067,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-10-17,samedi,oui,J-1,2026-10-16 11:15,24,,,,,,,,,,,,
+F067,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-10-17,samedi,oui,H-2,2026-10-17 09:15,2,,,,,,,,,,,,
+F067,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-10-17,samedi,oui,Final (au départ),2026-10-17 11:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F068,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-11-22,dimanche,non,J-14,2026-11-08 11:15,336,,,,,,,,,,,,
+F068,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-11-22,dimanche,non,J-3,2026-11-19 11:15,72,,,,,,,,,,,,
+F068,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-11-22,dimanche,non,J-1,2026-11-21 11:15,24,,,,,,,,,,,,
+F068,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-11-22,dimanche,non,H-2,2026-11-22 09:15,2,,,,,,,,,,,,
+F068,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-11-22,dimanche,non,Final (au départ),2026-11-22 11:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F069,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-12-28,lundi,oui,J-14,2026-12-14 11:15,336,,,,,,,,,,,,
+F069,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-12-28,lundi,oui,J-3,2026-12-25 11:15,72,,,,,,,,,,,,
+F069,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-12-28,lundi,oui,J-1,2026-12-27 11:15,24,,,,,,,,,,,,
+F069,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-12-28,lundi,oui,H-2,2026-12-28 09:15,2,,,,,,,,,,,,
+F069,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2026-12-28,lundi,oui,Final (au départ),2026-12-28 11:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F070,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-02-02,mardi,non,J-14,2027-01-19 11:15,336,,,,,,,,,,,,
+F070,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-02-02,mardi,non,J-3,2027-01-30 11:15,72,,,,,,,,,,,,
+F070,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-02-02,mardi,non,J-1,2027-02-01 11:15,24,,,,,,,,,,,,
+F070,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-02-02,mardi,non,H-2,2027-02-02 09:15,2,,,,,,,,,,,,
+F070,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-02-02,mardi,non,Final (au départ),2027-02-02 11:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F071,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-03-10,mercredi,non,J-14,2027-02-24 11:15,336,,,,,,,,,,,,
+F071,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-03-10,mercredi,non,J-3,2027-03-07 11:15,72,,,,,,,,,,,,
+F071,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-03-10,mercredi,non,J-1,2027-03-09 11:15,24,,,,,,,,,,,,
+F071,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-03-10,mercredi,non,H-2,2027-03-10 09:15,2,,,,,,,,,,,,
+F071,KL641,KL,AMS,JFK,Boeing 777-300ER,long,2027-03-10,mercredi,non,Final (au départ),2027-03-10 11:15,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F072,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-10-10,samedi,non,J-14,2026-09-26 13:40,336,,,,,,,,,,,,
+F072,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-10-10,samedi,non,J-3,2026-10-07 13:40,72,,,,,,,,,,,,
+F072,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-10-10,samedi,non,J-1,2026-10-09 13:40,24,,,,,,,,,,,,
+F072,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-10-10,samedi,non,H-2,2026-10-10 11:40,2,,,,,,,,,,,,
+F072,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-10-10,samedi,non,Final (au départ),2026-10-10 13:40,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F073,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-24,mardi,non,J-14,2026-11-10 13:40,336,,,,,,,,,,,,
+F073,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-24,mardi,non,J-3,2026-11-21 13:40,72,,,,,,,,,,,,
+F073,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-24,mardi,non,J-1,2026-11-23 13:40,24,,,,,,,,,,,,
+F073,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-24,mardi,non,H-2,2026-11-24 11:40,2,,,,,,,,,,,,
+F073,KL601,KL,AMS,LAX,Boeing 787-10,long,2026-11-24,mardi,non,Final (au départ),2026-11-24 13:40,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F074,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-01-08,vendredi,non,J-14,2026-12-25 13:40,336,,,,,,,,,,,,
+F074,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-01-08,vendredi,non,J-3,2027-01-05 13:40,72,,,,,,,,,,,,
+F074,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-01-08,vendredi,non,J-1,2027-01-07 13:40,24,,,,,,,,,,,,
+F074,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-01-08,vendredi,non,H-2,2027-01-08 11:40,2,,,,,,,,,,,,
+F074,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-01-08,vendredi,non,Final (au départ),2027-01-08 13:40,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F075,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-02-22,lundi,oui,J-14,2027-02-08 13:40,336,,,,,,,,,,,,
+F075,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-02-22,lundi,oui,J-3,2027-02-19 13:40,72,,,,,,,,,,,,
+F075,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-02-22,lundi,oui,J-1,2027-02-21 13:40,24,,,,,,,,,,,,
+F075,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-02-22,lundi,oui,H-2,2027-02-22 11:40,2,,,,,,,,,,,,
+F075,KL601,KL,AMS,LAX,Boeing 787-10,long,2027-02-22,lundi,oui,Final (au départ),2027-02-22 13:40,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F076,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-10-21,mercredi,oui,J-14,2026-10-07 14:05,336,,,,,,,,,,,,
+F076,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-10-21,mercredi,oui,J-3,2026-10-18 14:05,72,,,,,,,,,,,,
+F076,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-10-21,mercredi,oui,J-1,2026-10-20 14:05,24,,,,,,,,,,,,
+F076,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-10-21,mercredi,oui,H-2,2026-10-21 12:05,2,,,,,,,,,,,,
+F076,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-10-21,mercredi,oui,Final (au départ),2026-10-21 14:05,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F077,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-12-05,samedi,non,J-14,2026-11-21 14:05,336,,,,,,,,,,,,
+F077,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-12-05,samedi,non,J-3,2026-12-02 14:05,72,,,,,,,,,,,,
+F077,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-12-05,samedi,non,J-1,2026-12-04 14:05,24,,,,,,,,,,,,
+F077,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-12-05,samedi,non,H-2,2026-12-05 12:05,2,,,,,,,,,,,,
+F077,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2026-12-05,samedi,non,Final (au départ),2026-12-05 14:05,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F078,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-01-19,mardi,non,J-14,2027-01-05 14:05,336,,,,,,,,,,,,
+F078,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-01-19,mardi,non,J-3,2027-01-16 14:05,72,,,,,,,,,,,,
+F078,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-01-19,mardi,non,J-1,2027-01-18 14:05,24,,,,,,,,,,,,
+F078,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-01-19,mardi,non,H-2,2027-01-19 12:05,2,,,,,,,,,,,,
+F078,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-01-19,mardi,non,Final (au départ),2027-01-19 14:05,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F079,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-03-05,vendredi,oui,J-14,2027-02-19 14:05,336,,,,,,,,,,,,
+F079,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-03-05,vendredi,oui,J-3,2027-03-02 14:05,72,,,,,,,,,,,,
+F079,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-03-05,vendredi,oui,J-1,2027-03-04 14:05,24,,,,,,,,,,,,
+F079,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-03-05,vendredi,oui,H-2,2027-03-05 12:05,2,,,,,,,,,,,,
+F079,KL861,KL,AMS,NRT,Boeing 777-300ER,long,2027-03-05,vendredi,oui,Final (au départ),2027-03-05 14:05,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F080,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-11-01,dimanche,oui,J-14,2026-10-18 13:30,336,,,,,,,,,,,,
+F080,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-11-01,dimanche,oui,J-3,2026-10-29 13:30,72,,,,,,,,,,,,
+F080,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-11-01,dimanche,oui,J-1,2026-10-31 13:30,24,,,,,,,,,,,,
+F080,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-11-01,dimanche,oui,H-2,2026-11-01 11:30,2,,,,,,,,,,,,
+F080,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-11-01,dimanche,oui,Final (au départ),2026-11-01 13:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F081,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-12-16,mercredi,non,J-14,2026-12-02 13:30,336,,,,,,,,,,,,
+F081,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-12-16,mercredi,non,J-3,2026-12-13 13:30,72,,,,,,,,,,,,
+F081,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-12-16,mercredi,non,J-1,2026-12-15 13:30,24,,,,,,,,,,,,
+F081,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-12-16,mercredi,non,H-2,2026-12-16 11:30,2,,,,,,,,,,,,
+F081,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2026-12-16,mercredi,non,Final (au départ),2026-12-16 13:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F082,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-01-30,samedi,non,J-14,2027-01-16 13:30,336,,,,,,,,,,,,
+F082,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-01-30,samedi,non,J-3,2027-01-27 13:30,72,,,,,,,,,,,,
+F082,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-01-30,samedi,non,J-1,2027-01-29 13:30,24,,,,,,,,,,,,
+F082,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-01-30,samedi,non,H-2,2027-01-30 11:30,2,,,,,,,,,,,,
+F082,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-01-30,samedi,non,Final (au départ),2027-01-30 13:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F083,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-03-16,mardi,non,J-14,2027-03-02 13:30,336,,,,,,,,,,,,
+F083,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-03-16,mardi,non,J-3,2027-03-13 13:30,72,,,,,,,,,,,,
+F083,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-03-16,mardi,non,J-1,2027-03-15 13:30,24,,,,,,,,,,,,
+F083,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-03-16,mardi,non,H-2,2027-03-16 11:30,2,,,,,,,,,,,,
+F083,KL837,KL,AMS,BKK,Boeing 777-300ER,long,2027-03-16,mardi,non,Final (au départ),2027-03-16 13:30,0,,,,,,,,,,,,remplissage réel constaté au décollage
+F084,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-10-25,dimanche,oui,J-14,2026-10-11 07:45,336,,,,n/a,n/a,n/a,,,,,,
+F084,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-10-25,dimanche,oui,J-3,2026-10-22 07:45,72,,,,n/a,n/a,n/a,,,,,,
+F084,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-10-25,dimanche,oui,J-1,2026-10-24 07:45,24,,,,n/a,n/a,n/a,,,,,,
+F084,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-10-25,dimanche,oui,H-2,2026-10-25 05:45,2,,,,n/a,n/a,n/a,,,,,,
+F084,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-10-25,dimanche,oui,Final (au départ),2026-10-25 07:45,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F085,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-30,lundi,non,J-14,2026-11-16 07:45,336,,,,n/a,n/a,n/a,,,,,,
+F085,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-30,lundi,non,J-3,2026-11-27 07:45,72,,,,n/a,n/a,n/a,,,,,,
+F085,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-30,lundi,non,J-1,2026-11-29 07:45,24,,,,n/a,n/a,n/a,,,,,,
+F085,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-30,lundi,non,H-2,2026-11-30 05:45,2,,,,n/a,n/a,n/a,,,,,,
+F085,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2026-11-30,lundi,non,Final (au départ),2026-11-30 07:45,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F086,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-01-05,mardi,non,J-14,2026-12-22 07:45,336,,,,n/a,n/a,n/a,,,,,,
+F086,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-01-05,mardi,non,J-3,2027-01-02 07:45,72,,,,n/a,n/a,n/a,,,,,,
+F086,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-01-05,mardi,non,J-1,2027-01-04 07:45,24,,,,n/a,n/a,n/a,,,,,,
+F086,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-01-05,mardi,non,H-2,2027-01-05 05:45,2,,,,n/a,n/a,n/a,,,,,,
+F086,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-01-05,mardi,non,Final (au départ),2027-01-05 07:45,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F087,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-02-10,mercredi,oui,J-14,2027-01-27 07:45,336,,,,n/a,n/a,n/a,,,,,,
+F087,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-02-10,mercredi,oui,J-3,2027-02-07 07:45,72,,,,n/a,n/a,n/a,,,,,,
+F087,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-02-10,mercredi,oui,J-1,2027-02-09 07:45,24,,,,n/a,n/a,n/a,,,,,,
+F087,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-02-10,mercredi,oui,H-2,2027-02-10 05:45,2,,,,n/a,n/a,n/a,,,,,,
+F087,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-02-10,mercredi,oui,Final (au départ),2027-02-10 07:45,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F088,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-03-18,jeudi,non,J-14,2027-03-04 07:45,336,,,,n/a,n/a,n/a,,,,,,
+F088,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-03-18,jeudi,non,J-3,2027-03-15 07:45,72,,,,n/a,n/a,n/a,,,,,,
+F088,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-03-18,jeudi,non,J-1,2027-03-17 07:45,24,,,,n/a,n/a,n/a,,,,,,
+F088,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-03-18,jeudi,non,H-2,2027-03-18 05:45,2,,,,n/a,n/a,n/a,,,,,,
+F088,KL1233,KL,AMS,CDG,Boeing 737-800,medium,2027-03-18,jeudi,non,Final (au départ),2027-03-18 07:45,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F089,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-09,vendredi,non,J-14,2026-09-25 08:30,336,,,,n/a,n/a,n/a,,,,,,
+F089,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-09,vendredi,non,J-3,2026-10-06 08:30,72,,,,n/a,n/a,n/a,,,,,,
+F089,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-09,vendredi,non,J-1,2026-10-08 08:30,24,,,,n/a,n/a,n/a,,,,,,
+F089,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-09,vendredi,non,H-2,2026-10-09 06:30,2,,,,n/a,n/a,n/a,,,,,,
+F089,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-10-09,vendredi,non,Final (au départ),2026-10-09 08:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F090,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-11-23,lundi,non,J-14,2026-11-09 08:30,336,,,,n/a,n/a,n/a,,,,,,
+F090,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-11-23,lundi,non,J-3,2026-11-20 08:30,72,,,,n/a,n/a,n/a,,,,,,
+F090,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-11-23,lundi,non,J-1,2026-11-22 08:30,24,,,,n/a,n/a,n/a,,,,,,
+F090,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-11-23,lundi,non,H-2,2026-11-23 06:30,2,,,,n/a,n/a,n/a,,,,,,
+F090,KL1007,KL,AMS,LHR,Embraer 190,medium,2026-11-23,lundi,non,Final (au départ),2026-11-23 08:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F091,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-01-07,jeudi,non,J-14,2026-12-24 08:30,336,,,,n/a,n/a,n/a,,,,,,
+F091,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-01-07,jeudi,non,J-3,2027-01-04 08:30,72,,,,n/a,n/a,n/a,,,,,,
+F091,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-01-07,jeudi,non,J-1,2027-01-06 08:30,24,,,,n/a,n/a,n/a,,,,,,
+F091,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-01-07,jeudi,non,H-2,2027-01-07 06:30,2,,,,n/a,n/a,n/a,,,,,,
+F091,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-01-07,jeudi,non,Final (au départ),2027-01-07 08:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F092,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-02-21,dimanche,oui,J-14,2027-02-07 08:30,336,,,,n/a,n/a,n/a,,,,,,
+F092,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-02-21,dimanche,oui,J-3,2027-02-18 08:30,72,,,,n/a,n/a,n/a,,,,,,
+F092,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-02-21,dimanche,oui,J-1,2027-02-20 08:30,24,,,,n/a,n/a,n/a,,,,,,
+F092,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-02-21,dimanche,oui,H-2,2027-02-21 06:30,2,,,,n/a,n/a,n/a,,,,,,
+F092,KL1007,KL,AMS,LHR,Embraer 190,medium,2027-02-21,dimanche,oui,Final (au départ),2027-02-21 08:30,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F093,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-10-20,mardi,oui,J-14,2026-10-06 09:50,336,,,,n/a,n/a,n/a,,,,,,
+F093,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-10-20,mardi,oui,J-3,2026-10-17 09:50,72,,,,n/a,n/a,n/a,,,,,,
+F093,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-10-20,mardi,oui,J-1,2026-10-19 09:50,24,,,,n/a,n/a,n/a,,,,,,
+F093,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-10-20,mardi,oui,H-2,2026-10-20 07:50,2,,,,n/a,n/a,n/a,,,,,,
+F093,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-10-20,mardi,oui,Final (au départ),2026-10-20 09:50,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F094,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-12-04,vendredi,non,J-14,2026-11-20 09:50,336,,,,n/a,n/a,n/a,,,,,,
+F094,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-12-04,vendredi,non,J-3,2026-12-01 09:50,72,,,,n/a,n/a,n/a,,,,,,
+F094,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-12-04,vendredi,non,J-1,2026-12-03 09:50,24,,,,n/a,n/a,n/a,,,,,,
+F094,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-12-04,vendredi,non,H-2,2026-12-04 07:50,2,,,,n/a,n/a,n/a,,,,,,
+F094,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2026-12-04,vendredi,non,Final (au départ),2026-12-04 09:50,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F095,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-01-18,lundi,non,J-14,2027-01-04 09:50,336,,,,n/a,n/a,n/a,,,,,,
+F095,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-01-18,lundi,non,J-3,2027-01-15 09:50,72,,,,n/a,n/a,n/a,,,,,,
+F095,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-01-18,lundi,non,J-1,2027-01-17 09:50,24,,,,n/a,n/a,n/a,,,,,,
+F095,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-01-18,lundi,non,H-2,2027-01-18 07:50,2,,,,n/a,n/a,n/a,,,,,,
+F095,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-01-18,lundi,non,Final (au départ),2027-01-18 09:50,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F096,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-03-04,jeudi,oui,J-14,2027-02-18 09:50,336,,,,n/a,n/a,n/a,,,,,,
+F096,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-03-04,jeudi,oui,J-3,2027-03-01 09:50,72,,,,n/a,n/a,n/a,,,,,,
+F096,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-03-04,jeudi,oui,J-1,2027-03-03 09:50,24,,,,n/a,n/a,n/a,,,,,,
+F096,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-03-04,jeudi,oui,H-2,2027-03-04 07:50,2,,,,n/a,n/a,n/a,,,,,,
+F096,KL1653,KL,AMS,MAD,Boeing 737-700,medium,2027-03-04,jeudi,oui,Final (au départ),2027-03-04 09:50,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F097,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-10-31,samedi,oui,J-14,2026-10-17 10:40,336,,,,n/a,n/a,n/a,,,,,,
+F097,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-10-31,samedi,oui,J-3,2026-10-28 10:40,72,,,,n/a,n/a,n/a,,,,,,
+F097,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-10-31,samedi,oui,J-1,2026-10-30 10:40,24,,,,n/a,n/a,n/a,,,,,,
+F097,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-10-31,samedi,oui,H-2,2026-10-31 08:40,2,,,,n/a,n/a,n/a,,,,,,
+F097,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-10-31,samedi,oui,Final (au départ),2026-10-31 10:40,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F098,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-15,mardi,non,J-14,2026-12-01 10:40,336,,,,n/a,n/a,n/a,,,,,,
+F098,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-15,mardi,non,J-3,2026-12-12 10:40,72,,,,n/a,n/a,n/a,,,,,,
+F098,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-15,mardi,non,J-1,2026-12-14 10:40,24,,,,n/a,n/a,n/a,,,,,,
+F098,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-15,mardi,non,H-2,2026-12-15 08:40,2,,,,n/a,n/a,n/a,,,,,,
+F098,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2026-12-15,mardi,non,Final (au départ),2026-12-15 10:40,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F099,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-01-29,vendredi,non,J-14,2027-01-15 10:40,336,,,,n/a,n/a,n/a,,,,,,
+F099,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-01-29,vendredi,non,J-3,2027-01-26 10:40,72,,,,n/a,n/a,n/a,,,,,,
+F099,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-01-29,vendredi,non,J-1,2027-01-28 10:40,24,,,,n/a,n/a,n/a,,,,,,
+F099,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-01-29,vendredi,non,H-2,2027-01-29 08:40,2,,,,n/a,n/a,n/a,,,,,,
+F099,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-01-29,vendredi,non,Final (au départ),2027-01-29 10:40,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage
+F100,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-03-15,lundi,non,J-14,2027-03-01 10:40,336,,,,n/a,n/a,n/a,,,,,,
+F100,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-03-15,lundi,non,J-3,2027-03-12 10:40,72,,,,n/a,n/a,n/a,,,,,,
+F100,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-03-15,lundi,non,J-1,2027-03-14 10:40,24,,,,n/a,n/a,n/a,,,,,,
+F100,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-03-15,lundi,non,H-2,2027-03-15 08:40,2,,,,n/a,n/a,n/a,,,,,,
+F100,KL1573,KL,AMS,FCO,Boeing 737-800,medium,2027-03-15,lundi,non,Final (au départ),2027-03-15 10:40,0,,,,n/a,n/a,n/a,,,,,,remplissage réel constaté au décollage

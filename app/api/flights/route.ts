@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSupabase } from '@/lib/supabaseServer';
 import { getCurrentUser } from '@/lib/currentUser';
-import { isAtLeastThreeDaysOut } from '@/lib/flightPhase';
+import { isAtLeast24hOut } from '@/lib/flightPhase';
 import { computeDifficulty, getDataTier } from '@/lib/difficulty';
 
 export async function POST(request: Request) {
@@ -20,6 +20,7 @@ export async function POST(request: Request) {
     airlineCode,
     ticketType,
     seatsByCabin,
+    r1Count,
   } = body;
 
   if (!leagueId || !flightNumber || !flightDate || !scheduledDeparture) {
@@ -38,9 +39,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Tu n'es pas membre de cette ligue." }, { status: 403 });
   }
 
-  if (!isAtLeastThreeDaysOut(scheduledDeparture)) {
+  if (!isAtLeast24hOut(scheduledDeparture)) {
     return NextResponse.json(
-      { error: 'Un vol ne peut être posté que s\'il décolle dans au moins 3 jours.' },
+      { error: "Un vol ne peut être posté que s'il décolle dans au moins 24h." },
       { status: 400 }
     );
   }
@@ -85,6 +86,7 @@ export async function POST(request: Request) {
     flight_id: flight.id,
     submitted_by: user.id,
     seats_by_cabin: seatsByCabin ?? {},
+    r1_count: typeof r1Count === 'number' ? r1Count : null,
     difficulty: initialDifficulty,
   });
 

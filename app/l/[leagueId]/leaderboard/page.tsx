@@ -37,6 +37,63 @@ export default async function LeagueLeaderboardPage({ params }: { params: { leag
   });
   const distanceRanking = Array.from(distanceByUser.values()).sort((a, b) => b.km - a.km);
 
+  // Petits tops amusants, basés sur les vols résolus de la ligue.
+  const { data: resolvedFlights } = await supabase
+    .from('flights')
+    .select('created_by, actual_boarded, actual_class, profiles!flights_created_by_fkey(pseudo)')
+    .eq('league_id', league.id)
+    .eq('status', 'resolved');
+
+  const posterStats = new Map<
+    string,
+    { pseudo: string; total: number; notBoarded: number; boarded: number; business: number }
+  >();
+  (resolvedFlights ?? []).forEach((f: any) => {
+    const key = f.created_by;
+    const cur = posterStats.get(key) ?? {
+      pseudo: f.profiles?.pseudo ?? '?',
+      total: 0,
+      notBoarded: 0,
+      boarded: 0,
+      business: 0,
+    };
+    cur.total += 1;
+    if (f.actual_boarded === false) cur.notBoarded += 1;
+    if (f.actual_boarded === true) {
+      cur.boarded += 1;
+      if (f.actual_class === 'Business') cur.business += 1;
+    }
+    posterStats.set(key, cur);
+  });
+
+  const topNotBoarded = Array.from(posterStats.values())
+    .filter((s) => s.total > 0)
+    .map((s) => ({ pseudo: s.pseudo, pct: Math.round((s.notBoarded / s.total) * 100) }))
+    .sort((a, b) => b.pct - a.pct)[0];
+
+  const topBusiness = Array.from(posterStats.values())
+    .filter((s) => s.boarded > 0)
+    .map((s) => ({ pseudo: s.pseudo, pct: Math.round((s.business / s.boarded) * 100) }))
+    .sort((a, b) => b.pct - a.pct)[0];
+
+  // Le plus indécis : total des modifications de pari, tous vols de la
+  // ligue confondus (voir la fonctionnalité de modification de pari).
+  const { data: leagueBets } = await supabase
+    .from('bets')
+    .select('user_id, edit_count, profiles(pseudo), flights!inner(league_id)')
+    .eq('flights.league_id', league.id);
+
+  const editStats = new Map<string, { pseudo: string; totalEdits: number }>();
+  (leagueBets ?? []).forEach((b: any) => {
+    const key = b.user_id;
+    const cur = editStats.get(key) ?? { pseudo: b.profiles?.pseudo ?? '?', totalEdits: 0 };
+    cur.totalEdits += b.edit_count ?? 0;
+    editStats.set(key, cur);
+  });
+  const topIndecisive = Array.from(editStats.values())
+    .filter((s) => s.totalEdits > 0)
+    .sort((a, b) => b.totalEdits - a.totalEdits)[0];
+
   return (
     <main className="mx-auto max-w-2xl px-4 py-8">
       <h1 className="mb-6 font-display text-2xl text-text-primary">Classement — {league.name}</h1>
@@ -82,6 +139,35 @@ export default async function LeagueLeaderboardPage({ params }: { params: { leag
           </li>
         )}
       </ol>
+
+      <h2 className="mb-2 mt-8 font-display text-sm uppercase tracking-wide text-text-muted">
+        Petits tops
+      </h2>
+      <div className="grid gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-navy-line bg-navy-panel p-4 text-center">
+          <p className="text-xs uppercase tracking-wide text-text-muted">Le plus souvent refusé</p>
+          <p className="mt-1 text-lg font-semibold text-denied">{topNotBoarded?.pseudo ?? '—'}</p>
+          <p className="text-xs text-text-muted">
+            {topNotBoarded ? `${topNotBoarded.pct}% de ses vols` : 'Pas encore de vol résolu'}
+          </p>
+        </div>
+        <div className="rounded-lg border border-navy-line bg-navy-panel p-4 text-center">
+          <p className="text-xs uppercase tracking-wide text-text-muted">Le plus souvent en Business</p>
+          <p className="mt-1 text-lg font-semibold text-amber">{topBusiness?.pseudo ?? '—'}</p>
+          <p className="text-xs text-text-muted">
+            {topBusiness ? `${topBusiness.pct}% de ses embarquements` : "Pas encore d'embarquement"}
+          </p>
+        </div>
+        <div className="rounded-lg border border-navy-line bg-navy-panel p-4 text-center">
+          <p className="text-xs uppercase tracking-wide text-text-muted">Le plus indécis</p>
+          <p className="mt-1 text-lg font-semibold text-teal">{topIndecisive?.pseudo ?? '—'}</p>
+          <p className="text-xs text-text-muted">
+            {topIndecisive
+              ? `${topIndecisive.totalEdits} modification${topIndecisive.totalEdits > 1 ? 's' : ''} de pari`
+              : "Personne n'a modifié son pari"}
+          </p>
+        </div>
+      </div>
     </main>
   );
 }

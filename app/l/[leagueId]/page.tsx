@@ -25,6 +25,11 @@ export default async function LeagueDashboardPage({ params }: { params: { league
     .sort((a: any, b: any) => a.scheduled_departure.localeCompare(b.scheduled_departure));
   const past = all.filter((f: any) => getFlightPhase(f) === 'awaiting_result' || getFlightPhase(f) === 'resolved');
 
+  const departingSoon = upcoming.filter((f: any) => {
+    const msUntilDeparture = new Date(f.scheduled_departure).getTime() - Date.now();
+    return msUntilDeparture > 0 && msUntilDeparture <= 24 * 60 * 60 * 1000;
+  });
+
   const flightIds = all.map((f: any) => f.id);
   const { data: myBets } =
     flightIds.length > 0
@@ -50,6 +55,27 @@ export default async function LeagueDashboardPage({ params }: { params: { league
           + Poster un vol
         </Link>
       </div>
+
+      {departingSoon.length > 0 && (
+        <div className="mb-6 rounded-lg border border-teal/40 bg-navy-panel px-4 py-3 text-sm">
+          <p className="font-medium text-teal">
+            {departingSoon.length === 1
+              ? 'Un vol décolle dans moins de 24h :'
+              : `${departingSoon.length} vols décollent dans moins de 24h :`}
+          </p>
+          <p className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+            {departingSoon.map((f: any) => (
+              <Link
+                key={f.id}
+                href={`/l/${league.id}/flights/${f.id}`}
+                className="font-mono text-text-primary hover:text-amber"
+              >
+                {f.flight_number}
+              </Link>
+            ))}
+          </p>
+        </div>
+      )}
 
       {!user.seniority_date && (
         <Link

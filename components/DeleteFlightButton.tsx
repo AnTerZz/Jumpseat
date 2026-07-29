@@ -28,10 +28,7 @@ export default function DeleteFlightButton({ flightId, leagueId }: { flightId: s
 
   if (!confirming) {
     return (
-      <button
-        onClick={() => setConfirming(true)}
-        className="mb-6 text-sm text-denied underline hover:opacity-80"
-      >
+      <button onClick={() => setConfirming(true)} className="text-xs text-text-muted hover:text-denied">
         Supprimer ce vol
       </button>
     );

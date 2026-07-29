@@ -7,7 +7,7 @@ export async function POST(request: Request, { params }: { params: { id: string 
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: 'Non connecté.' }, { status: 401 });
 
-  const { seatsByCabin, note } = await request.json();
+  const { seatsByCabin, r1Count, note } = await request.json();
 
   const supabase = getSupabase();
   const { data: flight } = await supabase.from('flights').select('*').eq('id', params.id).maybeSingle();
@@ -47,6 +47,7 @@ export async function POST(request: Request, { params }: { params: { id: string 
     submitted_by: user.id,
     recorded_at: recordedAt.toISOString(),
     seats_by_cabin: seatsByCabin ?? {},
+    r1_count: typeof r1Count === 'number' ? r1Count : null,
     difficulty,
     note: note || null,
   });

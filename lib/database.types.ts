@@ -5,7 +5,7 @@
 
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
-export type SeatsByCabinJson = Record<string, { sold: number; capacity: number }>;
+export type SeatsByCabinJson = Record<string, { sold: number; capacity: number; pad?: number }>;
 
 // `Relationships` est requis par le type `GenericTable` de postgrest-js pour
 // que `Schema extends GenericSchema` reste vrai (sinon les lignes retournées
@@ -167,6 +167,7 @@ export type Database = {
           submitted_by: string;
           recorded_at: string;
           seats_by_cabin: SeatsByCabinJson;
+          r1_count: number | null;
           difficulty: number | null;
           note: string | null;
           created_at: string;
@@ -177,6 +178,7 @@ export type Database = {
           submitted_by: string;
           recorded_at?: string;
           seats_by_cabin?: SeatsByCabinJson;
+          r1_count?: number | null;
           difficulty?: number | null;
           note?: string | null;
           created_at?: string;
@@ -209,6 +211,7 @@ export type Database = {
           predicted_seats_remaining: number | null;
           points_awarded: number | null;
           placed_at: string;
+          edit_count: number;
         };
         Insert: {
           id?: string;
@@ -219,6 +222,7 @@ export type Database = {
           predicted_seats_remaining?: number | null;
           points_awarded?: number | null;
           placed_at?: string;
+          edit_count?: number;
         };
         Update: Partial<Database['public']['Tables']['bets']['Insert']>;
         Relationships: [

@@ -7,7 +7,10 @@ import { CABIN_CLASSES } from '@/lib/constants';
 export default function LoadUpdateForm({ flightId }: { flightId: string }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [seatsByCabin, setSeatsByCabin] = useState<Record<string, { sold: string; capacity: string }>>({});
+  const [seatsByCabin, setSeatsByCabin] = useState<
+    Record<string, { sold: string; capacity: string; pad: string }>
+  >({});
+  const [r1Count, setR1Count] = useState('');
   const [note, setNote] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -23,9 +26,13 @@ export default function LoadUpdateForm({ flightId }: { flightId: string }) {
         body: JSON.stringify({
           seatsByCabin: Object.fromEntries(
             Object.entries(seatsByCabin)
-              .filter(([, v]) => v.sold !== '' || v.capacity !== '')
-              .map(([k, v]) => [k, { sold: Number(v.sold || 0), capacity: Number(v.capacity || 0) }])
+              .filter(([, v]) => v.sold !== '' || v.capacity !== '' || v.pad !== '')
+              .map(([k, v]) => [
+                k,
+                { sold: Number(v.sold || 0), capacity: Number(v.capacity || 0), pad: Number(v.pad || 0) },
+              ])
           ),
+          r1Count: r1Count !== '' ? Number(r1Count) : null,
           note,
         }),
       });
@@ -36,6 +43,7 @@ export default function LoadUpdateForm({ flightId }: { flightId: string }) {
       }
       setOpen(false);
       setSeatsByCabin({});
+      setR1Count('');
       setNote('');
       router.refresh();
     } finally {
@@ -63,6 +71,7 @@ export default function LoadUpdateForm({ flightId }: { flightId: string }) {
             <th className="pb-1 font-normal">Cabine</th>
             <th className="pb-1 font-normal">Vendus</th>
             <th className="pb-1 font-normal">Capacité</th>
+            <th className="pb-1 font-normal">PAD</th>
           </tr>
         </thead>
         <tbody>
@@ -80,7 +89,7 @@ export default function LoadUpdateForm({ flightId }: { flightId: string }) {
                   className="w-full rounded-md border border-navy-line bg-navy px-2 py-1 text-text-primary"
                 />
               </td>
-              <td className="py-1">
+              <td className="py-1 pr-2">
                 <input
                   type="number"
                   min={0}
@@ -91,10 +100,32 @@ export default function LoadUpdateForm({ flightId }: { flightId: string }) {
                   className="w-full rounded-md border border-navy-line bg-navy px-2 py-1 text-text-primary"
                 />
               </td>
+              <td className="py-1">
+                <input
+                  type="number"
+                  min={0}
+                  value={seatsByCabin[cabin]?.pad ?? ''}
+                  onChange={(e) =>
+                    setSeatsByCabin((prev) => ({ ...prev, [cabin]: { ...prev[cabin], pad: e.target.value } }))
+                  }
+                  className="w-full rounded-md border border-navy-line bg-navy px-2 py-1 text-text-primary"
+                />
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className="mb-3">
+        <label className="mb-1 block text-xs uppercase tracking-wide text-text-muted">Nombre de R1</label>
+        <input
+          type="number"
+          min={0}
+          value={r1Count}
+          onChange={(e) => setR1Count(e.target.value)}
+          placeholder="0"
+          className="w-32 rounded-md border border-navy-line bg-navy px-2 py-1 text-text-primary placeholder:text-text-muted"
+        />
+      </div>
       <input
         value={note}
         onChange={(e) => setNote(e.target.value)}

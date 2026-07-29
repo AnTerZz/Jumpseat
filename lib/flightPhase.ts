@@ -30,8 +30,8 @@ export function canPlaceBet(flight: { status: string; scheduled_departure: strin
   return getFlightPhase(flight) === 'open';
 }
 
-export function isAtLeastThreeDaysOut(scheduledDeparture: string | Date): boolean {
+export function isAtLeast24hOut(scheduledDeparture: string | Date): boolean {
   const departure = new Date(scheduledDeparture).getTime();
-  const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
-  return departure - Date.now() >= THREE_DAYS_MS;
+  const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
+  return departure - Date.now() >= TWENTY_FOUR_HOURS_MS;
 }

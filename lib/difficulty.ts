@@ -23,7 +23,10 @@ export type DataTier = 'rich' | 'basic';
 
 // Un constat de remplissage donne les sièges vendus et la capacité totale
 // par cabine ; le nombre de sièges restants s'en déduit (voir `remainingSeats`).
-export type CabinLoad = { sold: number; capacity: number };
+// `pad` (nombre de standby en attente sur cette cabine) est collecté pour
+// estimer le pool de concurrents, mais n'entre pas encore dans le calcul de
+// difficulté ci-dessous — réservé pour le futur modèle de probabilité.
+export type CabinLoad = { sold: number; capacity: number; pad?: number };
 export type SeatsByCabin = Record<string, CabinLoad>;
 
 export function getDataTier(airlineCode: string | null | undefined): DataTier {
@@ -31,19 +34,29 @@ export function getDataTier(airlineCode: string | null | undefined): DataTier {
   return RICH_TIER_AIRLINE_CODES.includes(airlineCode.toUpperCase()) ? 'rich' : 'basic';
 }
 
-function remainingSeats(load: CabinLoad | undefined): number {
+export function remainingSeats(load: CabinLoad | undefined): number {
   if (!load) return 0;
   return Math.max(0, (load.capacity ?? 0) - (load.sold ?? 0));
 }
 
-// Cabine à surveiller en priorité selon le type de billet, pour le facteur
-// "remplissage" (voir la logique de priorité/surclassement discutée).
+// Cabine(s) à surveiller selon le type de billet, réutilisé par le calcul de
+// difficulté ci-dessous ET par lib/boardingProbability.ts (voir SCORING.md).
+export function getRelevantCabins(ticketType: TicketType | null): string[] {
+  switch (ticketType) {
+    case 'r2_business':
+      return ['Business'];
+    case 'r2_premium':
+      return ['Premium Economy'];
+    case 'r2s':
+      return ['Business', 'Premium Economy'];
+    case 'r2_eco':
+    default:
+      return ['Economy'];
+  }
+}
+
 function getUpgradePoolSeats(seatsByCabin: SeatsByCabin): number {
-  return (
-    remainingSeats(seatsByCabin['Business']) +
-    remainingSeats(seatsByCabin['Premium Economy']) +
-    remainingSeats(seatsByCabin['La Première'])
-  );
+  return remainingSeats(seatsByCabin['Business']) + remainingSeats(seatsByCabin['Premium Economy']);
 }
 
 function getRelevantSeatsRemaining(
