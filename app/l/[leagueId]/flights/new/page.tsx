@@ -116,7 +116,7 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
       </form>
 
       <p className="mb-4 text-xs text-text-muted">
-        Un vol ne peut être posté que s&apos;il décolle dans au moins 24h, pour laisser le temps
+        Un vol ne peut être posté que s&apos;il décolle dans au moins 2h, pour laisser le temps
         aux collègues de parier.
       </p>
 
