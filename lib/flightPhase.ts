@@ -32,6 +32,6 @@ export function canPlaceBet(flight: { status: string; scheduled_departure: strin
 
 export function isAtLeast24hOut(scheduledDeparture: string | Date): boolean {
   const departure = new Date(scheduledDeparture).getTime();
-  const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
-  return departure - Date.now() >= TWENTY_FOUR_HOURS_MS;
+  const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
+  return departure - Date.now() >= TWO_HOURS_MS;
 }
