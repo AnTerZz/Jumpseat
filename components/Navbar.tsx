@@ -45,6 +45,9 @@ export default function Navbar() {
               Mes ligues
             </Link>
           )}
+          <Link href="/stats" className="hover:text-amber">
+            Mes stats
+          </Link>
           <Link href="/profile" className="hover:text-amber">
             Profil
           </Link>
