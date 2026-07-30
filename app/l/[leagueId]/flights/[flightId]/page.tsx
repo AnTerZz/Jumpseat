@@ -7,13 +7,16 @@ import { getFlightPhase, FLIGHT_PHASE_LABELS } from '@/lib/flightPhase';
 import { computePBoard } from '@/lib/boardingProbability';
 import { computeBetPointsBreakdown, findLoadAsOf, type BetPointsBreakdown } from '@/lib/points';
 import type { TicketType, DataTier } from '@/lib/difficulty';
-import { TICKET_TYPES } from '@/lib/constants';
+import { TICKET_TYPES, MYIDTRAVEL_LABELS, type MyIdTravelStatus } from '@/lib/constants';
+import { formatDateTime } from '@/lib/dateFormat';
 import BetPanel from '@/components/BetPanel';
 import ResolvePanel from '@/components/ResolvePanel';
 import LoadUpdateForm from '@/components/LoadUpdateForm';
+import MyIdTravelStatusForm from '@/components/MyIdTravelStatusForm';
 import DeleteFlightButton from '@/components/DeleteFlightButton';
 import PBoardSparkline from '@/components/PBoardSparkline';
 import ConsensusBar from '@/components/ConsensusBar';
+import PointsBreakdown from '@/components/PointsBreakdown';
 
 export default async function FlightPage({
   params,
@@ -61,6 +64,7 @@ export default async function FlightPage({
           dataTier: flight.data_tier as DataTier,
           seatsByCabin: latestLoad?.seats_by_cabin ?? null,
           r1Count: latestLoad?.r1_count ?? null,
+          myIdTravelStatus: (latestLoad?.myidtravel_status as MyIdTravelStatus | null) ?? null,
           posterSeniorityDate: flight.profiles?.seniority_date ?? null,
           scheduledDeparture: flight.scheduled_departure,
           atTime: new Date(),
@@ -78,11 +82,16 @@ export default async function FlightPage({
         dataTier: flight.data_tier as DataTier,
         seatsByCabin: u.seats_by_cabin ?? null,
         r1Count: u.r1_count ?? null,
+        myIdTravelStatus: (u.myidtravel_status as MyIdTravelStatus | null) ?? null,
         posterSeniorityDate: flight.profiles?.seniority_date ?? null,
         scheduledDeparture: flight.scheduled_departure,
         atTime: new Date(u.recorded_at),
       }) * 100,
   }));
+  // Une courbe n'a de sens qu'avec au moins 2 constats à relier — avec un
+  // seul point (souvent juste celui posté à la création du vol), on garde
+  // uniquement le chiffre "Cote (modèle)" ci-dessous.
+  const hasPBoardTrend = pBoardHistory.filter((p) => p.pBoardPct != null).length >= 2;
 
   // Consensus des joueurs : % de pronostics "embarque" (même calcul que
   // ConsensusBar, pour l'afficher juste à côté de la cote du modèle).
@@ -130,7 +139,7 @@ export default async function FlightPage({
         {flight.origin ?? '?'} → {flight.destination ?? '?'}
       </p>
       <p className="mb-6 text-text-primary">
-        Départ : {new Date(flight.scheduled_departure).toLocaleString('fr-FR')} ·{' '}
+        Départ : {formatDateTime(flight.scheduled_departure)} ·{' '}
         {flight.aircraft_type ?? 'appareil inconnu'}
       </p>
 
@@ -170,7 +179,7 @@ export default async function FlightPage({
         <div className="mb-6 rounded-lg border-2 border-teal/60 bg-navy-panel p-4">
           <p className="mb-1 text-sm font-semibold text-text-primary">Dernier remplissage connu</p>
           <p className="mb-3 text-xs text-text-muted">
-            {new Date(latestLoad.recorded_at).toLocaleString('fr-FR')}
+            {formatDateTime(latestLoad.recorded_at)}
           </p>
           <table className="w-full text-sm">
             <thead>
@@ -206,13 +215,27 @@ export default async function FlightPage({
         </div>
       )}
 
+      {flight.data_tier === 'basic' && latestLoad?.myidtravel_status && (
+        <div className="mb-6 rounded-lg border-2 border-teal/60 bg-navy-panel p-4">
+          <p className="mb-1 text-sm font-semibold text-text-primary">Statut MyIdTravel connu</p>
+          <p className="mb-2 text-xs text-text-muted">{formatDateTime(latestLoad.recorded_at)}</p>
+          <p className="text-text-primary">
+            {MYIDTRAVEL_LABELS[latestLoad.myidtravel_status as MyIdTravelStatus]}
+          </p>
+        </div>
+      )}
+
       {pBoardNow != null && (phase === 'open' || phase === 'betting_closed') && (
         <div className="mb-6 rounded-lg border border-teal/40 bg-navy-panel p-4">
-          <p className="mb-2 text-sm font-medium text-text-primary">
-            Évolution de la probabilité d&apos;embarquement
-          </p>
-          <PBoardSparkline points={pBoardHistory} />
-          <div className="mt-3 grid grid-cols-2 gap-3">
+          {hasPBoardTrend && (
+            <>
+              <p className="mb-2 text-sm font-medium text-text-primary">
+                Évolution de la probabilité d&apos;embarquement
+              </p>
+              <PBoardSparkline points={pBoardHistory} />
+            </>
+          )}
+          <div className={`grid grid-cols-2 gap-3 ${hasPBoardTrend ? 'mt-3' : ''}`}>
             <div className="rounded-md bg-navy px-3 py-2 text-center">
               <p className="text-[10px] uppercase tracking-wide text-text-muted">Cote (modèle)</p>
               <p className="text-xl font-semibold text-teal">{Math.round(pBoardNow * 100)}%</p>
@@ -233,6 +256,13 @@ export default async function FlightPage({
 
       {flight.data_tier === 'rich' && flight.status !== 'resolved' && (
         <LoadUpdateForm flightId={flight.id} airlineCode={flight.airline_code} />
+      )}
+
+      {flight.data_tier === 'basic' && flight.status !== 'resolved' && (
+        <MyIdTravelStatusForm
+          flightId={flight.id}
+          currentStatus={(latestLoad?.myidtravel_status as MyIdTravelStatus | null) ?? null}
+        />
       )}
 
       <div className="mb-6 rounded-lg border border-navy-line bg-navy-panel p-4">
@@ -258,38 +288,7 @@ export default async function FlightPage({
                   {b.points_awarded != null ? ` · ${b.points_awarded} pts` : ''}
                 </span>
               </div>
-              {bd && (
-                <div className="mt-1.5 space-y-0.5 text-xs text-text-muted">
-                  {!bd.boardedCorrect ? (
-                    <p>Pronostic d&apos;embarquement faux → 0 pt</p>
-                  ) : (
-                    <>
-                      <p>
-                        Embarquement correct (P utilisée : {Math.round((bd.outcomeProbability ?? 0) * 100)}%)
-                        → cote ×{bd.boardTerm.toFixed(2)}
-                      </p>
-                      {bd.classCorrect != null && (
-                        <p>
-                          Classe {bd.classCorrect ? 'correcte' : 'incorrecte'} (P fixe 33%)
-                          {bd.classCorrect ? ` → cote ×${bd.classTerm.toFixed(2)}` : ' → 0 pt'}
-                        </p>
-                      )}
-                      {bd.seatsDiff != null && (
-                        <p>
-                          Sièges : écart de {bd.seatsDiff} → crédit {Math.round(bd.seatsTerm * 100)}%
-                        </p>
-                      )}
-                      <p>Multiplicateur temporel (délai avant décollage) : ×{bd.timeMultiplier}</p>
-                      {bd.editCount > 0 && (
-                        <p>
-                          Pénalité modification ({bd.editCount}x) : ×{bd.editPenaltyFactor.toFixed(2)}
-                        </p>
-                      )}
-                      <p className="text-text-primary">= {bd.finalPoints} pts</p>
-                    </>
-                  )}
-                </div>
-              )}
+              {bd && <PointsBreakdown bd={bd} />}
             </li>
           );
         })}

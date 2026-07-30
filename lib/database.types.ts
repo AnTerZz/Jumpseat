@@ -27,12 +27,14 @@ export type Database = {
           id: string;
           pseudo: string;
           seniority_date: string | null;
+          notify_new_flights: boolean;
           created_at: string;
         };
         Insert: {
           id: string;
           pseudo: string;
           seniority_date?: string | null;
+          notify_new_flights?: boolean;
           created_at?: string;
         };
         Update: Partial<Database['public']['Tables']['profiles']['Insert']>;
@@ -119,6 +121,7 @@ export type Database = {
           actual_seats_remaining: number | null;
           resolved_at: string | null;
           reminder_sent_at: string | null;
+          added_digest_sent_at: string | null;
           created_at: string;
         };
         Insert: {
@@ -140,6 +143,7 @@ export type Database = {
           actual_seats_remaining?: number | null;
           resolved_at?: string | null;
           reminder_sent_at?: string | null;
+          added_digest_sent_at?: string | null;
           created_at?: string;
         };
         Update: Partial<Database['public']['Tables']['flights']['Insert']>;
@@ -169,6 +173,7 @@ export type Database = {
           seats_by_cabin: SeatsByCabinJson;
           r1_count: number | null;
           difficulty: number | null;
+          myidtravel_status: string | null;
           note: string | null;
           created_at: string;
         };
@@ -180,6 +185,7 @@ export type Database = {
           seats_by_cabin?: SeatsByCabinJson;
           r1_count?: number | null;
           difficulty?: number | null;
+          myidtravel_status?: string | null;
           note?: string | null;
           created_at?: string;
         };

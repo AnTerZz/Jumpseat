@@ -64,7 +64,7 @@ function run(scenario: Scenario) {
     actual_seats_remaining: scenario.actualSeatsRemaining,
   };
   const loadAtBetTime: LoadSnapshotAtBetTime = scenario.seatsByCabin
-    ? { seats_by_cabin: scenario.seatsByCabin, r1_count: scenario.r1Count }
+    ? { seats_by_cabin: scenario.seatsByCabin, r1_count: scenario.r1Count, myidtravel_status: null }
     : null;
 
   const pBoardForScoring = computePBoardForScoring({

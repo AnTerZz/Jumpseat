@@ -6,15 +6,18 @@ import { useRouter } from 'next/navigation';
 export default function ProfileForm({
   initialPseudo,
   initialSeniorityDate,
+  initialNotifyNewFlights,
   next,
 }: {
   initialPseudo: string;
   initialSeniorityDate: string | null;
+  initialNotifyNewFlights: boolean;
   next?: string;
 }) {
   const router = useRouter();
   const [pseudo, setPseudo] = useState(initialPseudo);
   const [seniorityDate, setSeniorityDate] = useState(initialSeniorityDate ?? '');
+  const [notifyNewFlights, setNotifyNewFlights] = useState(initialNotifyNewFlights);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
@@ -28,7 +31,7 @@ export default function ProfileForm({
       const res = await fetch('/api/profile', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pseudo, seniorityDate }),
+        body: JSON.stringify({ pseudo, seniorityDate, notifyNewFlights }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -68,6 +71,32 @@ export default function ProfileForm({
           className="w-full rounded-md border border-navy-line bg-navy-panel px-3 py-2 text-text-primary outline-none focus:border-amber"
         />
       </div>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={notifyNewFlights}
+        onClick={() => setNotifyNewFlights((v) => !v)}
+        className="flex w-full items-center justify-between gap-4 rounded-md border border-navy-line bg-navy-panel px-3 py-3 text-left transition-colors hover:border-amber/50 focus:outline-none focus:ring-2 focus:ring-amber/50"
+      >
+        <div>
+          <p className="text-sm font-medium text-text-primary">Digest quotidien des nouveaux vols</p>
+          <p className="text-xs text-text-muted">
+            Un e-mail par jour listant les vols postés dans tes ligues (aucun envoi s&apos;il n&apos;y
+            a rien de nouveau).
+          </p>
+        </div>
+        <span
+          className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
+            notifyNewFlights ? 'bg-amber' : 'bg-navy-line'
+          }`}
+        >
+          <span
+            className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-text-primary shadow transition-transform ${
+              notifyNewFlights ? 'translate-x-5' : 'translate-x-0'
+            }`}
+          />
+        </span>
+      </button>
 
       {error && <p className="text-sm text-denied">{error}</p>}
       {saved && !error && <p className="text-sm text-boarded">Profil mis à jour.</p>}

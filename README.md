@@ -60,6 +60,11 @@ récupère pas automatiquement les nouvelles colonnes. Exécute au besoin :
 ```sql
 alter table flight_load_updates add column if not exists r1_count integer;
 alter table bets add column if not exists edit_count integer not null default 0;
+alter table profiles add column if not exists notify_new_flights boolean not null default false;
+alter table flights add column if not exists added_digest_sent_at timestamptz;
+alter table flight_load_updates add column if not exists myidtravel_status text check (myidtravel_status in ('green', 'orange', 'red'));
+create unique index if not exists flights_no_duplicate_per_poster
+  on flights (league_id, created_by, flight_number, flight_date);
 ```
 
 (`seats_by_cabin` et son champ `pad` par cabine sont dans une colonne jsonb
@@ -165,6 +170,14 @@ Le dernier constat connu est affiché en évidence sur la page du vol (table
 Cabine/Vendus/Restants/PAD), juste avant de parier — c'est la donnée la plus
 utile pour décider d'un pronostic.
 
+**Compagnies "basic"** (pas de remplissage détaillé) : même circuit
+`flight_load_updates`/`LoadUpdateForm`, mais avec un simple statut de couleur
+MyIdTravel (Vert/Orange/Rouge) au lieu d'une table cabine/sièges — voir
+`MyIdTravelStatusForm`, `lib/constants.ts` (`MYIDTRAVEL_PBOARD` :
+70%/40%/10%). Renseignable à la création du vol ou mis à jour ensuite sur sa
+page ; sans statut renseigné, P(embarque) reste à 50% (valeur neutre, comme
+avant cette fonctionnalité).
+
 ## 8. Système de score
 
 Détail complet, historique des décisions et plan de calibration future dans
@@ -234,7 +247,26 @@ rappel part automatiquement vers le posteur (`lib/email.ts`,
    crons plus fréquents nécessitent un plan Pro) ; passe à `0 * * * *` si tu
    upgrades.
 
-## 11. Outils de test (locaux uniquement, jamais déployés)
+Même clé Resend et même `CRON_SECRET` utilisés par le digest quotidien des
+nouveaux vols (section suivante) — plan Hobby limité à 2 crons, donc pas de
+marge pour en ajouter un troisième sans upgrader.
+
+## 11. Digest quotidien des nouveaux vols (opt-in)
+
+Chaque membre peut activer, dans `/profile`, la réception d'un e-mail
+quotidien listant les vols postés dans ses ligues (`notify_new_flights` sur
+`profiles`) — désactivé par défaut, jamais d'e-mail pour son propre vol
+posté, et aucun envoi les jours sans nouveau vol.
+
+- `vercel.json` déclenche `/api/digest` une fois par jour (21h UTC, soit
+  ~22h-23h heure française selon l'heure d'été/hiver — ajuste le cron si tu
+  veux un autre horaire de "fin de journée").
+- Chaque vol posté est marqué `added_digest_sent_at` une fois inclus dans un
+  envoi (réussi ou non), pour ne jamais le renvoyer ni faire grossir le
+  digest indéfiniment si un cron est raté (voir commentaires dans
+  `app/api/digest/route.ts`).
+
+## 12. Outils de test (locaux uniquement, jamais déployés)
 
 - `npm run simulate-flight` — liste les vols non résolus d'une ligue ;
   `npm run simulate-flight -- <flightId> [minutesDansLePassé]` recule le
@@ -246,7 +278,7 @@ rappel part automatiquement vers le posteur (`lib/email.ts`,
   `lib/boardingProbability.ts`) et affiche le détail, pour vérifier que le
   barème reste équilibré après un changement de constantes.
 
-## 12. Où ajuster les règles du jeu
+## 13. Où ajuster les règles du jeu
 
 - `lib/constants.ts` : nom de l'app, classes de cabine, types de billet R2,
   compagnies à info "rich", barème de points (poids, plafonds, pénalités),
@@ -261,7 +293,7 @@ rappel part automatiquement vers le posteur (`lib/email.ts`,
 - `lib/distance.ts` : référentiel d'aéroports pour la distance parcourue —
   pas exhaustif, complète-le si un aéroport manque.
 
-## 13. Déploiement sur Vercel
+## 14. Déploiement sur Vercel
 
 1. Pousse ce projet sur un repo GitHub (privé de préférence). `.env.local`
    est ignoré par git — ne le commite jamais (il contient la clé
@@ -283,7 +315,7 @@ rappel part automatiquement vers le posteur (`lib/email.ts`,
 7. L'app est installable sur l'écran d'accueil (iPhone/Android) comme une
    app grâce au manifeste PWA (`app/manifest.ts`).
 
-## 14. Ce qui reste volontairement de côté
+## 15. Ce qui reste volontairement de côté
 
 Idées discutées mais pas implémentées (voir `BACKLOG.md`, section "à
 trier/valider, rien n'est décidé") : classement mensuel, badges liés aux

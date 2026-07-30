@@ -87,7 +87,7 @@ function LoginForm() {
                 autoComplete="one-time-code"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
-                placeholder="123456"
+                placeholder="12345678"
                 className="w-full rounded-md border border-navy-line bg-navy-panel px-3 py-2 font-mono text-lg tracking-widest text-text-primary outline-none placeholder:text-text-muted focus:border-amber"
                 required
               />

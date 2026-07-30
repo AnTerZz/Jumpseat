@@ -25,7 +25,12 @@ export default async function ProfilePage({
           Renseigne ta date d&apos;entrée en compagnie pour continuer.
         </p>
       )}
-      <ProfileForm initialPseudo={user.pseudo} initialSeniorityDate={user.seniority_date} next={next} />
+      <ProfileForm
+        initialPseudo={user.pseudo}
+        initialSeniorityDate={user.seniority_date}
+        initialNotifyNewFlights={user.notify_new_flights}
+        next={next}
+      />
     </main>
   );
 }

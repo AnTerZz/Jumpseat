@@ -1,4 +1,4 @@
-import { POINTS, TIME_MULTIPLIER_TIERS } from './constants';
+import { POINTS, TIME_MULTIPLIER_TIERS, type MyIdTravelStatus } from './constants';
 import { computePBoardForScoring, CLASS_PROBABILITY } from './boardingProbability';
 import type { TicketType, DataTier, SeatsByCabin } from './difficulty';
 
@@ -28,6 +28,7 @@ type ResolvedFlight = {
 export type LoadSnapshotAtBetTime = {
   seats_by_cabin: SeatsByCabin | null;
   r1_count: number | null;
+  myidtravel_status: MyIdTravelStatus | null;
 } | null;
 
 // Reconstruit ce qui était connu au moment précis d'un pari (pas le
@@ -35,13 +36,22 @@ export type LoadSnapshotAtBetTime = {
 // trié du plus ancien au plus récent. Partagé entre la résolution du vol
 // (calcul des points) et l'affichage du détail sur la page du vol.
 export function findLoadAsOf(
-  loadHistory: { recorded_at: string; seats_by_cabin: SeatsByCabin | null; r1_count: number | null }[],
+  loadHistory: {
+    recorded_at: string;
+    seats_by_cabin: SeatsByCabin | null;
+    r1_count: number | null;
+    myidtravel_status?: MyIdTravelStatus | null;
+  }[],
   placedAt: string
 ): LoadSnapshotAtBetTime {
   const candidates = loadHistory.filter((l) => l.recorded_at <= placedAt);
   if (candidates.length === 0) return null;
   const latest = candidates[candidates.length - 1];
-  return { seats_by_cabin: latest.seats_by_cabin, r1_count: latest.r1_count };
+  return {
+    seats_by_cabin: latest.seats_by_cabin,
+    r1_count: latest.r1_count,
+    myidtravel_status: latest.myidtravel_status ?? null,
+  };
 }
 
 // Détail du calcul, pour affichage aux joueurs une fois le vol résolu (voir
@@ -113,6 +123,7 @@ export function computeBetPointsBreakdown(
     dataTier: flight.data_tier,
     seatsByCabin: loadAtBetTime?.seats_by_cabin ?? null,
     r1Count: loadAtBetTime?.r1_count ?? null,
+    myIdTravelStatus: loadAtBetTime?.myidtravel_status ?? null,
     posterSeniorityDate,
     scheduledDeparture: departure,
     atTime: placedAt,

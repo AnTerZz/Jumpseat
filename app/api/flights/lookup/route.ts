@@ -12,9 +12,14 @@ export async function POST(request: Request) {
   }
 
   try {
-    const info = await lookupFlight(flightNumber, date);
-    if (!info) return NextResponse.json({ error: 'Vol introuvable pour cette date.' }, { status: 404 });
-    return NextResponse.json(info);
+    const flights = await lookupFlight(flightNumber, date);
+    if (flights.length === 0) {
+      return NextResponse.json({ error: 'Vol introuvable pour cette date.' }, { status: 404 });
+    }
+    // Plusieurs résultats possibles (numéro réutilisé le même jour,
+    // codeshares...) : on les renvoie tous, l'appelant choisit s'il y en a
+    // plus d'un (voir app/l/[leagueId]/flights/new/page.tsx).
+    return NextResponse.json({ flights });
   } catch (err: any) {
     return NextResponse.json({ error: err.message ?? 'Erreur de recherche.' }, { status: 502 });
   }

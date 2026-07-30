@@ -6,7 +6,7 @@ export async function PATCH(request: Request) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: 'Non connecté.' }, { status: 401 });
 
-  const { pseudo, seniorityDate } = await request.json();
+  const { pseudo, seniorityDate, notifyNewFlights } = await request.json();
   const cleanPseudo = (pseudo ?? '').trim();
   if (cleanPseudo.length < 2) {
     return NextResponse.json({ error: 'Pseudo trop court.' }, { status: 400 });
@@ -15,7 +15,7 @@ export async function PATCH(request: Request) {
   const supabase = getSupabase();
   const { error } = await supabase
     .from('profiles')
-    .update({ pseudo: cleanPseudo, seniority_date: seniorityDate || null })
+    .update({ pseudo: cleanPseudo, seniority_date: seniorityDate || null, notify_new_flights: !!notifyNewFlights })
     .eq('id', user.id);
 
   if (error) {

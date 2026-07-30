@@ -29,6 +29,22 @@ export const TICKET_TYPES = [
 export const DATA_TIERS = ['rich', 'basic'] as const;
 export const RICH_TIER_AIRLINE_CODES = ['AF', 'TO']; // Air France, Transavia
 
+// Pour les compagnies "basic" (pas de remplissage détaillé disponible), le
+// statut de couleur MyIdTravel (vu par le posteur/les collègues sur l'appli
+// MyIdTravel) sert de proxy grossier à P(embarque) — voir lib/boardingProbability.ts.
+export const MYIDTRAVEL_STATUSES = ['green', 'orange', 'red'] as const;
+export type MyIdTravelStatus = (typeof MYIDTRAVEL_STATUSES)[number];
+export const MYIDTRAVEL_LABELS: Record<MyIdTravelStatus, string> = {
+  green: 'Vert',
+  orange: 'Orange',
+  red: 'Rouge',
+};
+export const MYIDTRAVEL_PBOARD: Record<MyIdTravelStatus, number> = {
+  green: 0.7,
+  orange: 0.4,
+  red: 0.1,
+};
+
 // Barème : points = TimeMultiplier x (boardWeight x BoardOddsTerm +
 // classWeight x ClassTerm + seatsWeight x SeatsTerm), 0 si le pronostic
 // d'embarquement est faux (voir SCORING.md pour le détail de la formule et

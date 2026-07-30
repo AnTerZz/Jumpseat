@@ -18,6 +18,7 @@
 // valeurs calibrées — à remplacer une fois le modèle réel disponible.
 
 import { getRelevantCabins, remainingSeats, type SeatsByCabin, type TicketType, type DataTier } from './difficulty';
+import { MYIDTRAVEL_PBOARD, type MyIdTravelStatus } from './constants';
 
 // --- Ancienneté -> position estimée dans la file d'attente PAD ---
 // 30 ans d'ancienneté ou plus = en tête de file (percentile 0 = meilleur).
@@ -76,6 +77,7 @@ export function computePBoard({
   dataTier,
   seatsByCabin,
   r1Count,
+  myIdTravelStatus,
   posterSeniorityDate,
   scheduledDeparture,
   atTime,
@@ -84,11 +86,18 @@ export function computePBoard({
   dataTier: DataTier;
   seatsByCabin: SeatsByCabin | null | undefined;
   r1Count: number | null | undefined;
+  myIdTravelStatus?: MyIdTravelStatus | null;
   posterSeniorityDate: Date | string | null | undefined;
   scheduledDeparture: Date | string;
   atTime: Date;
 }): number {
-  if (dataTier !== 'rich' || !seatsByCabin) {
+  if (dataTier !== 'rich') {
+    // Pas de remplissage détaillé sur ces compagnies, mais le statut de
+    // couleur MyIdTravel (renseigné par les collègues) donne une estimation
+    // grossière si disponible — sinon on reste sur la probabilité neutre.
+    return myIdTravelStatus ? MYIDTRAVEL_PBOARD[myIdTravelStatus] : NO_DATA_PBOARD;
+  }
+  if (!seatsByCabin) {
     return NO_DATA_PBOARD;
   }
 

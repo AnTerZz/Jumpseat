@@ -3,6 +3,7 @@ import { getSupabase } from '@/lib/supabaseServer';
 import { getCurrentUser } from '@/lib/currentUser';
 import { isAtLeast24hOut } from '@/lib/flightPhase';
 import { computeDifficulty, getDataTier } from '@/lib/difficulty';
+import { MYIDTRAVEL_STATUSES, type MyIdTravelStatus } from '@/lib/constants';
 
 export async function POST(request: Request) {
   const user = await getCurrentUser();
@@ -21,6 +22,7 @@ export async function POST(request: Request) {
     ticketType,
     seatsByCabin,
     r1Count,
+    myidtravelStatus,
   } = body;
 
   if (!leagueId || !flightNumber || !flightDate || !scheduledDeparture) {
@@ -46,6 +48,24 @@ export async function POST(request: Request) {
     );
   }
 
+  // Un même posteur ne peut pas poster deux fois le même vol (numéro + date)
+  // dans la même ligue (voir aussi la contrainte unique en base, filet de
+  // sécurité en cas de requêtes simultanées).
+  const { data: existing } = await supabase
+    .from('flights')
+    .select('id')
+    .eq('league_id', leagueId)
+    .eq('created_by', user.id)
+    .eq('flight_number', flightNumber)
+    .eq('flight_date', flightDate)
+    .maybeSingle();
+  if (existing) {
+    return NextResponse.json(
+      { error: 'Tu as déjà posté ce vol (même numéro et même date) dans cette ligue.' },
+      { status: 409 }
+    );
+  }
+
   const dataTier = getDataTier(airlineCode);
 
   const { data: flight, error } = await supabase
@@ -66,6 +86,12 @@ export async function POST(request: Request) {
     .select()
     .single();
 
+  if (error?.code === '23505') {
+    return NextResponse.json(
+      { error: 'Tu as déjà posté ce vol (même numéro et même date) dans cette ligue.' },
+      { status: 409 }
+    );
+  }
   if (error || !flight) {
     return NextResponse.json({ error: 'Impossible de créer le vol.' }, { status: 500 });
   }
@@ -82,12 +108,19 @@ export async function POST(request: Request) {
     seatsByCabin: seatsByCabin ?? null,
   });
 
+  // Statut MyIdTravel optionnel, seulement pertinent pour les vols "basic"
+  // (voir lib/constants.ts) — ignoré silencieusement s'il est fourni sur un
+  // vol "rich" ou avec une valeur invalide.
+  const validMyIdTravelStatus: MyIdTravelStatus | null =
+    dataTier === 'basic' && MYIDTRAVEL_STATUSES.includes(myidtravelStatus) ? myidtravelStatus : null;
+
   await supabase.from('flight_load_updates').insert({
     flight_id: flight.id,
     submitted_by: user.id,
     seats_by_cabin: seatsByCabin ?? {},
     r1_count: typeof r1Count === 'number' ? r1Count : null,
     difficulty: initialDifficulty,
+    myidtravel_status: validMyIdTravelStatus,
   });
 
   return NextResponse.json({ flight });

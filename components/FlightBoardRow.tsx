@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SplitFlap from './SplitFlap';
 import { getFlightPhase, FLIGHT_PHASE_LABELS } from '@/lib/flightPhase';
+import { formatFlightDate, formatFlightTime } from '@/lib/dateFormat';
 
 export default function FlightBoardRow({
   flight,
@@ -11,9 +12,8 @@ export default function FlightBoardRow({
   leagueId: string;
   hasBet: boolean;
 }) {
-  const departure = new Date(flight.scheduled_departure);
-  const dateLabel = departure.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' });
-  const timeLabel = departure.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  const dateLabel = formatFlightDate(flight.scheduled_departure);
+  const timeLabel = formatFlightTime(flight.scheduled_departure);
 
   const phase = getFlightPhase(flight);
   const statusLabel =

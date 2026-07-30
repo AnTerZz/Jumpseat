@@ -19,7 +19,13 @@ export type FlightInfo = {
   airlineCode: string | null; // code IATA (ex: AF, KL, TO) — utilisé pour le data_tier
 };
 
-export async function lookupFlight(flightNumber: string, date: string): Promise<FlightInfo | null> {
+// Renvoie TOUS les vols candidats pour ce numéro/cette date — AeroDataBox
+// renvoie parfois plusieurs résultats (ex: numéro réutilisé pour un aller ET
+// un retour le même jour, codeshares...), donc prendre le premier au hasard
+// pouvait associer le mauvais horaire/appareil au vol posté. C'est à
+// l'appelant de désambiguïser si la liste contient plus d'un élément (voir
+// app/api/flights/lookup/route.ts).
+export async function lookupFlight(flightNumber: string, date: string): Promise<FlightInfo[]> {
   const key = process.env.AERODATABOX_RAPIDAPI_KEY;
   if (!key) {
     throw new Error('AERODATABOX_RAPIDAPI_KEY manquant dans les variables d\'environnement.');
@@ -38,7 +44,7 @@ export async function lookupFlight(flightNumber: string, date: string): Promise<
 
   // Vol inconnu pour cette date : 404 chez AeroDataBox directement, 204
   // (corps vide) via le proxy API.market observé en pratique — on couvre les deux.
-  if (res.status === 404 || res.status === 204) return null;
+  if (res.status === 404 || res.status === 204) return [];
   if (!res.ok) {
     throw new Error(`Recherche du vol impossible (code ${res.status}).`);
   }
@@ -47,26 +53,26 @@ export async function lookupFlight(flightNumber: string, date: string): Promise<
   // API.market enveloppe le tableau de résultats dans { value: [...] },
   // contrairement à l'appel RapidAPI direct qui renvoie un tableau nu.
   const list = Array.isArray(data) ? data : Array.isArray(data?.value) ? data.value : [];
-  const first = list[0];
-  if (!first) return null;
 
   // Le code compagnie vient de préférence de l'API ; à défaut, on le
   // déduit du préfixe alphabétique du numéro de vol (ex: "AF1680" -> "AF"),
   // ce qui marche pour la quasi-totalité des numéros de vol commerciaux.
   const codeFromNumber = cleaned.match(/^[A-Z]{2,3}/)?.[0] ?? null;
 
-  // Le champ vient sous la forme "2026-08-05 05:30Z" (espace, pas de 'T') :
-  // on le normalise en ISO 8601 strict pour le stockage timestamptz.
-  const rawUtc = first?.departure?.scheduledTime?.utc as string | undefined;
-  const scheduledDeparture = rawUtc ? rawUtc.replace(' ', 'T') : null;
+  return list.map((item: any) => {
+    // Le champ vient sous la forme "2026-08-05 05:30Z" (espace, pas de 'T') :
+    // on le normalise en ISO 8601 strict pour le stockage timestamptz.
+    const rawUtc = item?.departure?.scheduledTime?.utc as string | undefined;
+    const scheduledDeparture = rawUtc ? rawUtc.replace(' ', 'T') : null;
 
-  return {
-    flightNumber: cleaned,
-    origin: first?.departure?.airport?.iata ?? null,
-    destination: first?.arrival?.airport?.iata ?? null,
-    scheduledDeparture,
-    aircraftType: first?.aircraft?.model ?? null,
-    airline: first?.airline?.name ?? null,
-    airlineCode: first?.airline?.iata ?? codeFromNumber,
-  };
+    return {
+      flightNumber: cleaned,
+      origin: item?.departure?.airport?.iata ?? null,
+      destination: item?.arrival?.airport?.iata ?? null,
+      scheduledDeparture,
+      aircraftType: item?.aircraft?.model ?? null,
+      airline: item?.airline?.name ?? null,
+      airlineCode: item?.airline?.iata ?? codeFromNumber,
+    };
+  });
 }

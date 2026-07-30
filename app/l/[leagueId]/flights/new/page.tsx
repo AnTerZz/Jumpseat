@@ -2,20 +2,24 @@
 
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { getCabinClasses, TICKET_TYPES } from '@/lib/constants';
+import { getCabinClasses, TICKET_TYPES, type MyIdTravelStatus } from '@/lib/constants';
 import { getDataTier } from '@/lib/difficulty';
+import { formatDateTime } from '@/lib/dateFormat';
 import RemplissagePasteBox from '@/components/RemplissagePasteBox';
+import MyIdTravelStatusPicker from '@/components/MyIdTravelStatusPicker';
 
 export default function NewFlightPage({ params }: { params: { leagueId: string } }) {
   const router = useRouter();
   const [flightNumber, setFlightNumber] = useState('');
   const [date, setDate] = useState('');
+  const [candidates, setCandidates] = useState<any[] | null>(null);
   const [info, setInfo] = useState<any>(null);
   const [ticketType, setTicketType] = useState<string>(TICKET_TYPES[0].value);
   const [seatsByCabin, setSeatsByCabin] = useState<
     Record<string, { sold: string; capacity: string; pad: string }>
   >({});
   const [r1Count, setR1Count] = useState('');
+  const [myIdTravelStatus, setMyIdTravelStatus] = useState<MyIdTravelStatus | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -24,6 +28,7 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
     e.preventDefault();
     setError(null);
     setInfo(null);
+    setCandidates(null);
     setLoading(true);
     try {
       const res = await fetch('/api/flights/lookup', {
@@ -36,7 +41,13 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
         setError(data.error ?? 'Vol introuvable.');
         return;
       }
-      setInfo(data);
+      if (data.flights.length === 1) {
+        setInfo(data.flights[0]);
+      } else {
+        // Plusieurs vols correspondent (numéro réutilisé le même jour,
+        // codeshares...) : on laisse choisir plutôt que de deviner.
+        setCandidates(data.flights);
+      }
     } finally {
       setLoading(false);
     }
@@ -74,6 +85,7 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
                 )
               : null,
           r1Count: dataTier === 'rich' && r1Count !== '' ? Number(r1Count) : null,
+          myidtravelStatus: dataTier === 'basic' ? myIdTravelStatus : null,
         }),
       });
       const data = await res.json();
@@ -122,6 +134,33 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
 
       {error && <p className="mb-4 text-sm text-denied">{error}</p>}
 
+      {candidates && (
+        <div className="mb-4 space-y-2">
+          <p className="text-sm text-text-primary">
+            {candidates.length} vols correspondent à {flightNumber.toUpperCase()} pour cette date —
+            choisis le bon :
+          </p>
+          {candidates.map((c, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                setInfo(c);
+                setCandidates(null);
+              }}
+              className="block w-full rounded-lg border border-navy-line bg-navy-panel p-3 text-left hover:border-amber"
+            >
+              <p className="font-mono text-text-primary">
+                {c.flightNumber} · {c.aircraftType ?? 'appareil inconnu'}
+              </p>
+              <p className="text-sm text-text-muted">
+                {c.origin ?? '?'} → {c.destination ?? '?'} ·{' '}
+                {c.scheduledDeparture ? formatDateTime(c.scheduledDeparture) : 'horaire inconnu'}
+              </p>
+            </button>
+          ))}
+        </div>
+      )}
+
       {info && (
         <div className="space-y-4 rounded-lg border border-navy-line bg-navy-panel p-4">
           <div>
@@ -131,7 +170,7 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
             </p>
             <p className="mb-1 text-text-muted">
               Départ prévu :{' '}
-              {info.scheduledDeparture ? new Date(info.scheduledDeparture).toLocaleString('fr-FR') : 'inconnu'}
+              {info.scheduledDeparture ? formatDateTime(info.scheduledDeparture) : 'inconnu'}
             </p>
             <p className="text-text-muted">Appareil : {info.aircraftType ?? 'inconnu'}</p>
           </div>
@@ -243,11 +282,14 @@ export default function NewFlightPage({ params }: { params: { leagueId: string }
               </div>
             </>
           ) : (
-            <p className="text-xs text-text-muted">
-              Compagnie hors Air France/Transavia : pas de type de billet à préciser ni de
-              remplissage à saisir, seul le pari embarque/n&apos;embarque pas sera proposé.
-              Vérifie juste que les informations du vol ci-dessus sont correctes.
-            </p>
+            <div>
+              <p className="mb-2 text-xs text-text-muted">
+                Compagnie hors Air France/Transavia : pas de remplissage détaillé disponible.
+                Si tu connais le statut MyIdTravel, renseigne-le (optionnel, modifiable plus tard
+                sur la page du vol) pour affiner l&apos;estimation de la probabilité d&apos;embarquement.
+              </p>
+              <MyIdTravelStatusPicker value={myIdTravelStatus} onChange={setMyIdTravelStatus} />
+            </div>
           )}
 
           <button

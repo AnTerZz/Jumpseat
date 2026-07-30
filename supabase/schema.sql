@@ -12,6 +12,7 @@ create table if not exists profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   pseudo text not null,
   seniority_date date, -- date d'entrée en compagnie : détermine la priorité GP
+  notify_new_flights boolean not null default false, -- opt-in : digest quotidien des vols postés (voir app/api/digest)
   created_at timestamptz not null default now()
 );
 
@@ -59,8 +60,16 @@ create table if not exists flights (
   actual_seats_remaining integer,
   resolved_at timestamptz,
   reminder_sent_at timestamptz, -- e-mail de rappel envoyé au posteur (24h après le décollage)
+  added_digest_sent_at timestamptz, -- vol déjà inclus dans le digest quotidien "nouveaux vols" (voir app/api/digest)
   created_at timestamptz not null default now()
 );
+
+-- Un même posteur ne peut pas poster deux fois le même vol (numéro + date)
+-- dans la même ligue — filet de sécurité en plus de la vérification côté
+-- app (voir app/api/flights/route.ts), au cas où deux requêtes arriveraient
+-- en même temps.
+create unique index if not exists flights_no_duplicate_per_poster
+  on flights (league_id, created_by, flight_number, flight_date);
 
 -- Historique du remplissage constaté dans le temps : le tout premier constat
 -- est obligatoire à la création du vol (même auteur que le vol), et
@@ -80,6 +89,10 @@ create table if not exists flight_load_updates (
   seats_by_cabin jsonb not null default '{}'::jsonb,
   r1_count integer, -- nombre de R1 (priorité devant les R2) constatés sur ce vol
   difficulty numeric(3, 1), -- indice de difficulté calculé à cet instant (voir lib/difficulty.ts)
+  -- Statut de couleur MyIdTravel, uniquement pour les vols "basic" (pas de
+  -- remplissage détaillé) : proxy grossier de P(embarque), voir
+  -- lib/constants.ts (MYIDTRAVEL_PBOARD) et lib/boardingProbability.ts.
+  myidtravel_status text check (myidtravel_status in ('green', 'orange', 'red')),
   note text,
   created_at timestamptz not null default now()
 );
