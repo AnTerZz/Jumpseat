@@ -2,12 +2,11 @@
 // changer de fournisseur facilement (ex: passer à l'API officielle
 // Air France-KLM developer.airfranceklm.com si tu obtiens un accès).
 //
-// Fournisseur par défaut : AeroDataBox, via le proxy API.market (clés au
-// format cuid2, ex: "cms57..." — distinctes des clés RapidAPI classiques,
-// qui sont de longues chaînes hexadécimales et passent par un tout autre
-// host/en-tête). Si ta clé vient de RapidAPI directement plutôt que
-// d'API.market, remplace l'URL et l'en-tête ci-dessous par
-// https://aerodatabox.p.rapidapi.com/... + X-RapidAPI-Key/X-RapidAPI-Host.
+// Fournisseur par défaut : AeroDataBox, via RapidAPI (clés = longues
+// chaînes hexadécimales, host aerodatabox.p.rapidapi.com). Si ta clé vient
+// d'API.market plutôt que de RapidAPI directement, remplace l'URL et
+// l'en-tête ci-dessous par https://prod.api.market/api/v1/aedbx/aerodatabox/...
+// + le header x-api-market-key (clés au format cuid2, ex: "cms57...").
 
 export type FlightInfo = {
   flightNumber: string;
@@ -32,26 +31,28 @@ export async function lookupFlight(flightNumber: string, date: string): Promise<
   }
 
   const cleaned = flightNumber.replace(/\s+/g, '').toUpperCase();
-  const url = `https://prod.api.market/api/v1/aedbx/aerodatabox/flights/number/${cleaned}/${date}`;
+  const url = `https://aerodatabox.p.rapidapi.com/flights/number/${cleaned}/${date}`;
 
   const res = await fetch(url, {
     headers: {
-      'x-api-market-key': key,
+      'X-RapidAPI-Key': key,
+      'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com',
     },
     // Les résultats changent peu une fois publiés : petit cache pour ménager le quota.
     next: { revalidate: 300 },
   });
 
-  // Vol inconnu pour cette date : 404 chez AeroDataBox directement, 204
-  // (corps vide) via le proxy API.market observé en pratique — on couvre les deux.
+  // Vol inconnu pour cette date : 404 chez AeroDataBox/RapidAPI. Le 204 reste
+  // géré par précaution (observé en pratique via le proxy API.market).
   if (res.status === 404 || res.status === 204) return [];
   if (!res.ok) {
     throw new Error(`Recherche du vol impossible (code ${res.status}).`);
   }
 
   const data = await res.json();
-  // API.market enveloppe le tableau de résultats dans { value: [...] },
-  // contrairement à l'appel RapidAPI direct qui renvoie un tableau nu.
+  // RapidAPI renvoie un tableau nu ; le fallback { value: [...] } reste là
+  // par précaution si tu repasses un jour par un proxy qui enveloppe la
+  // réponse (ex: API.market).
   const list = Array.isArray(data) ? data : Array.isArray(data?.value) ? data.value : [];
 
   // Le code compagnie vient de préférence de l'API ; à défaut, on le
@@ -64,7 +65,6 @@ export async function lookupFlight(flightNumber: string, date: string): Promise<
     // on le normalise en ISO 8601 strict pour le stockage timestamptz.
     const rawUtc = item?.departure?.scheduledTime?.utc as string | undefined;
     const scheduledDeparture = rawUtc ? rawUtc.replace(' ', 'T') : null;
-
     return {
       flightNumber: cleaned,
       origin: item?.departure?.airport?.iata ?? null,
